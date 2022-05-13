@@ -83,12 +83,12 @@ Ad model
   name: String,
   category: {
          type: String,
-         enum: ['Clothing', "Accessories", 'Tech', 'Books', "Sports", "Other"]
+         enum: ['Clothes', "Accessories","Footwear", "Tech", "Books", "Sports", "Musical Instruments", "Furniture", "Other"]
   },
   description: String,
   condition: {
       type:String,
-      enum:["new", "used but ok", "used with marks"]
+      enum:["New with tags ", " Excellent used condition", "Gently used and well mantained", "Very used"]
       },
   imageURL: String
 }
