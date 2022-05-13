@@ -23,6 +23,7 @@ const projectName = "switch";
 
 app.locals.appTitle = `${capitalized(projectName)}`;
 
+
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);
