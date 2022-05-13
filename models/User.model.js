@@ -14,7 +14,7 @@ const userSchema = new Schema(
       match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"],
     },
 
-    passwordHash: {
+    password: {
       type: String,
       required: [true, "Please input a password"],
     },

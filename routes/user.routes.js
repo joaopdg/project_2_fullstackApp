@@ -1,5 +1,7 @@
 const isLoggedIn = require("../middleware/isLoggedIn");
 const User = require("../models/User.model");
+const Post = require("../models/Post.model");
+const Comment = require("../models/Comment.model");
 
 const router = require("express").Router();
 
@@ -15,9 +17,9 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   });
 
 
-router.get('/ads-list', isLoggedIn, (req, res, next) => {
+router.get('/list', isLoggedIn, (req, res, next) => {
     Post.find()
-    .then((posts) => res.render('ads-list', {posts}))
+    .then((posts) => res.render('ads/list', {posts}))
     .catch((err) => next (err))
 })
 
@@ -28,5 +30,5 @@ router.get('/ads-list', isLoggedIn, (req, res, next) => {
 
 
 
-module.exports = router;
+module.exports = router; 
  
