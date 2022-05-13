@@ -1,14 +1,27 @@
+<h2>SIGNUP</h2>
 <form action="/signup" method="POST">
-   <label for="name">Name</label>
-      <input type="text" name="name">
-   
-   <label for="password">Password</label>
-      <input type="password" name="password">
-   
 
-   <button type="submit">Submit</button>
+  <label for="name">Name:</label>
+  <input type="text" name="name" placeholder="John Snow"/>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" placeholder="johnSnow@camelCase.com" />
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" placeholder="enter password here" />
+
+  <label for="address">Address:</label>
+  <input type="address" name="address" placeholder="Jardim do Tabaco, 82 " />
+
+  <label for="location">Location:</label>
+  <input type="location" name="location" placeholder="Lisbon" />
+
+  <label for="phone">Phone number:</label>
+  <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" placeholder="999999999"/>
+
+  <button type="submit">Create your account</button>
 </form>
 
 {{#if errorMessage}}
-   {{errorMessage}}
+  {{errorMessage}}
 {{/if}}
