@@ -1,0 +1,24 @@
+<h3>Edit your profile</h3>
+
+<form action="/profile/edit" method="POST">
+
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="{{user.name}}" />
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" value="{{user.email}}" />
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" placeholder="new password here" />
+
+  <label for="address">Address:</label>
+  <input type="address" name="address" value="{{user.address}}" />
+
+  <label for="location">Location:</label>
+  <input type="location" name="location" value="{{user.location}}" />
+
+  <label for="contact">Phone number:</label>
+  <input type="number" id="contact" name="contact" value="{{user.contact}}" />
+
+  <button type="submit">Edit your account</button>
+</form>

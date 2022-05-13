@@ -66,7 +66,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           password: hashedPassword,
           address,
           location,
-          contact
+          contact,
         });
       })
       .then((user) => {
@@ -132,6 +132,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           });
         }
         req.session.user = user;
+        req.app.locals.currentUser = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
       });
@@ -155,6 +156,5 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
-
 
 module.exports = router;
