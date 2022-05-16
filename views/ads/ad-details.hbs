@@ -4,6 +4,21 @@
 <p><b>condition:</b> {{post.condition}}</p>
 <img src="{{post.imageURL}}" alt="image of{{post.title}}" />
 
+<hr />
+
+{{#each comments}}
+  <p><i>{{content}}</i></p>
+{{/each}}
+
+<hr />
+
+<form action="ad-details/{{post._id}}" method="post">
+  <label for="content">Comments</label>
+  <textarea id="content" name="content" rows="4" cols="50">
+  </textarea>
+  <button type="submit">Comment</button>
+</form>
+
 {{#if user}}
   <a href="/ad-edit/{{post._id}}">edit</a>
   <form action="/ad-details/{{post._id}}/delete" method="post">
