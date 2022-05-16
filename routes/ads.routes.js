@@ -8,11 +8,9 @@ const fileUpload = require("../config/cloudinary.config");
 
 router.get("/list", isLoggedIn, (req, res, next) => {
   Post.find()
-    .then((ads) => res.render("ads/list", {ads}))
+    .then((ads) => res.render("ads/list", { ads, user: req.session.user }))
     .catch((err) => next(err));
 });
-
-//create-ad
 
 router.get("/create-ad/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -66,15 +64,11 @@ router.post(
   }
 );
 
-
 router.get("/ad-details/:id", (req, res, next) => {
-    const { id } = req.params;
-    Post.findById(id)
-    .then((post)=>{
-        res.render("ads/ad-details", post )
-    })
-  
+  const { id } = req.params;
+  Post.findById(id).then((post) => {
+    res.render("ads/ad-details", post);
   });
-  
+});
 
 module.exports = router;
