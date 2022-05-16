@@ -66,4 +66,15 @@ router.post(
   }
 );
 
+
+router.get("/ad-details/:id", (req, res, next) => {
+    const { id } = req.params;
+    Post.findById(id)
+    .then((post)=>{
+        res.render("ads/ad-details", post )
+    })
+  
+  });
+  
+
 module.exports = router;
