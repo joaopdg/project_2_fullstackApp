@@ -6,13 +6,14 @@
 
 <hr />
 
-{{#each comments}}
-  <p><i>{{content}}</i></p>
+{{#each post.comments}}
+
+  <p>{{author.name}}: {{this.content}}</p>
 {{/each}}
 
 <hr />
 
-<form action="ad-details/{{post._id}}" method="post">
+<form action="/ad-details/{{post._id}}/comments" method="post">
   <label for="content">Comments</label>
   <textarea id="content" name="content" rows="4" cols="50">
   </textarea>

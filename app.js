@@ -35,6 +35,9 @@ app.use("/", userRoutes);
 
 const adsRoutes = require("./routes/ads.routes");
 app.use("/", adsRoutes);
+
+const commentsRoutes = require("./routes/comments.routes");
+app.use("/", commentsRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

@@ -68,6 +68,14 @@ router.post(
 router.get("/ad-details/:id", (req, res, next) => {
   const { id } = req.params;
   Post.findById(id)
+    .populate("comments")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    })
     .then((post) => {
       res.render("ads/ad-details", { post, user: req.session.user });
     })
