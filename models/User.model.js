@@ -34,7 +34,7 @@ const userSchema = new Schema(
       required: true,
     },
 
-    imageUrl: {
+    imageURL: {
       type: String,
       default:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG3eLpTAMWO-mtILepXLwg68-IChyGcXJgog&usqp=CAU",

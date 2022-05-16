@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
@@ -66,9 +67,64 @@ router.post(
 
 router.get("/ad-details/:id", (req, res, next) => {
   const { id } = req.params;
-  Post.findById(id).then((post) => {
-    res.render("ads/ad-details", post);
-  });
+  Post.findById(id)
+    .then((post) => {
+      res.render("ads/ad-details", { post, user: req.session.user });
+    })
+    .catch((err) => next(err));
+});
+
+router.get("/ad-edit/:id", (req, res, next) => {
+  const { id } = req.params;
+  Post.findById(id)
+    .then((post) => {
+      res.render("ads/ad-edit", { post, user: req.session.user });
+    })
+    .catch((err) => next(err));
+});
+
+router.post(
+  "/ad-edit/:id",
+  isLoggedIn,
+  fileUpload.single("ad-image"),
+  (req, res, next) => {
+    const { id } = req.params;
+    const { title, category, description, condition } = req.body;
+    if (req.file) {
+      Post.findByIdAndUpdate(id, {
+        title,
+        category,
+        description,
+        condition,
+        imageURL: req.file.path,
+      })
+        .then((post) => {
+          res.redirect(`/ad-details/${id}`);
+        })
+        .catch((err) => next(err));
+    } else {
+      Post.findByIdAndUpdate(id, {
+        title,
+        category,
+        description,
+        condition,
+      })
+        .then((post) => {
+          res.redirect(`/ad-details/${id}`);
+        })
+        .catch((err) => next(err));
+    }
+  }
+);
+
+router.post("/ad-details/:id/delete", (req, res, next) => {
+  const { id } = req.params;
+
+  Post.findByIdAndRemove(id)
+    .then(() => {
+      res.redirect(`/profile/${req.session.user._id}`);
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;
