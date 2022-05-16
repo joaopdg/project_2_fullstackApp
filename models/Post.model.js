@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const postSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  author: { type: Schema.Types.ObjectId, ref: "User" },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   title: {
     type: String,
@@ -30,7 +30,7 @@ const postSchema = new Schema({
     type: String,
     required: true,
     enum: [
-      "New with tags ",
+      "New with tags",
       "Excellent used condition",
       "Gently used and well mantained",
       "Very used",

@@ -1,1 +1,11 @@
 <a href="/profile/{{user._id}}/edit">edit your profile</a>
+
+{{#each ads}}
+
+  <h3>title: {{title}}</h3>
+  <p>description: {{description}}</p>
+  <p>consition: {{condition}}</p>
+  <p>category: {{category}}</p>
+  <img src="{{imageURL}}" alt="" />
+
+{{/each}}

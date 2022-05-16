@@ -16,10 +16,11 @@ router.get("/list", isLoggedIn, (req, res, next) => {
 
 router.get("/create-ad/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  User.findById(id).then((user) => {
-    res.render("ads/ad-create", { user });
-    console.log(user);
-  });
+  User.findById(id)
+    .then((user) => {
+      res.render("ads/ad-create", { user });
+    })
+    .catch((err) => next(err));
 });
 
 router.post(
@@ -28,22 +29,39 @@ router.post(
   fileUpload.single("ad-image"),
   (req, res, next) => {
     const { id } = req.params;
-    const { user, comments, title, category, description, condition } =
-      req.body;
-
-    Post.create({
-      user,
-      comments,
-      title,
-      category,
-      description,
-      condition,
-      imageUrl: req.file.path,
-    })
-      .then((newAd) => {
-        res.render("user/profile", { newAd, user: req.session.user });
+    const { title, category, description, condition } = req.body;
+    if (req.file) {
+      Post.create({
+        title,
+        category,
+        description,
+        condition,
+        imageURL: req.file.path,
+        author: id,
       })
-      .catch((err) => next(err));
+        .then((newAd) => {
+          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } });
+        })
+        .then(() => {
+          res.redirect(`/profile/${id}`);
+        })
+        .catch((err) => next(err));
+    } else {
+      Post.create({
+        title,
+        category,
+        description,
+        condition,
+        author: id,
+      })
+        .then((newAd) => {
+          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } });
+        })
+        .then(() => {
+          res.redirect(`/profile/${id}`);
+        })
+        .catch((err) => next(err));
+    }
   }
 );
 
