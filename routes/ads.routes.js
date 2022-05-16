@@ -7,8 +7,8 @@ const Comment = require("../models/Comment.model");
 const fileUpload = require("../config/cloudinary.config");
 
 router.get("/list", isLoggedIn, (req, res, next) => {
-  Post.find({})
-    .then((posts) => res.render("ads/list", { posts, user: req.session.user }))
+  Post.find()
+    .then((ads) => res.render("ads/list", {ads}))
     .catch((err) => next(err));
 });
 
