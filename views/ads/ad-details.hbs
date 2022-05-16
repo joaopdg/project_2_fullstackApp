@@ -22,8 +22,10 @@
 
 {{#if user}}
   <a href="/ad-edit/{{post._id}}">edit</a>
+
   <form action="/ad-details/{{post._id}}/delete" method="post">
     <button type="submit">Delete</button>
   </form>
+  
 {{/if}}
 <a href="/profile/{{post.author}}">go back</a>

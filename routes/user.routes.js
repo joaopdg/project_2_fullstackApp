@@ -65,4 +65,15 @@ router.post(
   }
 );
 
+router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
+
+  req.session.destroy();
+  User.findByIdAndRemove(id)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;
