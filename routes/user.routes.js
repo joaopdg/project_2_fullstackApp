@@ -6,7 +6,7 @@ const Comment = require("../models/Comment.model");
 const router = require("express").Router();
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
-  res.render("user/profile");
+  res.render("user/profile", { user: req.session.user });
 });
 
 /* router.get("/profile/:id", isLoggedIn, (req, res, next) => {
@@ -22,13 +22,17 @@ router.get("/list", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/profile/edit", isLoggedIn, (req, res, next) => {
-  res.render("user/edit-profile", { user: req.session.user });
+router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
+  User.findById(id).then((user) => {
+    res.render("user/edit-profile",  {user} );
+  });
 });
 
-router.post("/profile/edit", isLoggedIn, (req, res, next) => {
+router.post("/profile/:id/edit", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
   const { name, email, password, location, address, contact } = req.body;
-  User.findOneAndUpdate(email, {
+  User.findByIdAndUpdate(id, {
     name,
     email,
     password,
@@ -37,7 +41,8 @@ router.post("/profile/edit", isLoggedIn, (req, res, next) => {
     contact,
   })
     .then(() => {
-      res.redirect("/profile");
+      res.render("user/profile", { user: req.session.user });
+      console.log({ user: req.session.user });
     })
     .catch((err) => next(err));
 });
