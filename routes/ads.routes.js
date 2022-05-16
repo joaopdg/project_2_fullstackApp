@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const User = require("../models/User.model");
 const Post = require("../models/Post.model");
 const Comment = require("../models/Comment.model");
+const fileUpload = require("../config/cloudinary.config");
 
 router.get("/list", isLoggedIn, (req, res, next) => {
   Post.find({})
