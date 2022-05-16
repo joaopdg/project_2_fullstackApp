@@ -31,7 +31,7 @@ const postSchema = new Schema({
     required: true,
     enum: [
       "New with tags ",
-      " Excellent used condition",
+      "Excellent used condition",
       "Gently used and well mantained",
       "Very used",
     ],

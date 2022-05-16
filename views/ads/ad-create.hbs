@@ -1,0 +1,43 @@
+<h2>Create an ad:</h2>
+<form action="/create-ad" method="POST">
+
+  <label for="title">title:</label>
+  <input type="text" name="title" />
+
+  <label for="location">location:</label>
+  <input type="location" name="location"/>
+
+  <label for="description">description:</label>
+  <input type="address" name="description" />
+
+    <label for="image">Image:</label>
+  <input type="file" name="movie-image" />
+
+  <label for="category">category:</label>
+  <select id="category" name="category">
+    <option value="Clothes">Clothes</option>
+    <option value="Accessories">Accessories</option>
+    <option value="Footwear">Footwear</option>
+    <option value="Tech">Tech</option>
+    <option value="Books">Books</option>
+    <option value="Sports">Sports</option>
+    <option value="Musical Instruments">Musical Instruments</option>
+    <option value="Furniture">Furniture</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <label for="condition">condition:</label>
+  <select id="condition" name="condition">
+    <option value="New with tags">New with tags</option>
+    <option value="Excellent used condition">Excellent used condition</option>
+    <option value="Gently used and well mantained">Gently used and well
+      mantained</option>
+    <option value="Very used">Very used</option>
+  </select>
+
+  <button type="submit">Create</button>
+</form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
