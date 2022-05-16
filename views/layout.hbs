@@ -10,11 +10,19 @@
 
   <a href="/">home</a>
   <a href="/list">view all ads</a>
-  <a href="/profile/{{user._id}}">profile</a>
-  <a href="/signup">signup</a>
-  <a href="/login">login</a>
+  {{#if user}}
+    <a href="/profile/{{user._id}}">profile</a>
   <a href="/logout">logout</a>
   <a href="/create-ad/{{user._id}}">create ad</a>
+
+  {{else}}
+
+  <a href="/signup">signup</a>
+  <a href="/login">login</a>
+  {{/if}}
+
+
+
 
   <hr />
 
