@@ -8,7 +8,7 @@
 
 {{#each post.comments}}
 
-  <p>{{author.name}}: {{this.content}}</p>
+  <p> <a href="/profile/{{author._id}}">{{author.name}}:</a> {{this.content}}</p>
 {{/each}}
 
 <hr />
