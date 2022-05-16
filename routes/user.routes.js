@@ -5,22 +5,15 @@ const Comment = require("../models/Comment.model");
 
 const router = require("express").Router();
 
-router.get("/profile", isLoggedIn, (req, res, next) => {
-  res.render("user/profile", { user: req.session.user });
-});
 
-/* router.get("/profile/:id", isLoggedIn, (req, res, next) => {
+  router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   User.findById(id)
     .then((user) => res.render("user/profile", { user }))
     .catch((err) => next(err));
 });
- */
-router.get("/list", isLoggedIn, (req, res, next) => {
-  Post.find()
-    .then((posts) => res.render("ads/list", { posts }))
-    .catch((err) => next(err));
-});
+ 
+
 
 router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -42,7 +35,6 @@ router.post("/profile/:id/edit", isLoggedIn, (req, res, next) => {
   })
     .then(() => {
       res.render("user/profile", { user: req.session.user });
-      console.log({ user: req.session.user });
     })
     .catch((err) => next(err));
 });

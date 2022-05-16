@@ -23,7 +23,6 @@ const projectName = "switch";
 
 app.locals.appTitle = `${capitalized(projectName)}`;
 
-
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);
@@ -31,9 +30,11 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
-const userRoutes = require('./routes/user.routes')
-app.use('/', userRoutes)
+const userRoutes = require("./routes/user.routes");
+app.use("/", userRoutes);
 
+const adsRoutes = require("./routes/ads.routes");
+app.use("/", adsRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
