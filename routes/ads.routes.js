@@ -30,6 +30,7 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
     const { title, category, description, condition } = req.body;
+    console.log("check file:", req.file);
     if (req.file) {
       Post.create({
         title,
