@@ -12,9 +12,11 @@
     <a href="/profile/{{author._id}}">{{author.name}}:</a>
     {{this.content}}</p>
 
-  <form action="/ad-details/{{_id}}" method="post">
-    <button type="submit">Delete comment</button>
-  </form>
+  {{#ifEquals ../user._id author._id}}
+    <form action="/ad-details/{{_id}}" method="post">
+      <button type="submit">Delete comment</button>
+    </form>
+{{/ifEquals}}
 
 {{/each}}
 
@@ -27,12 +29,12 @@
   <button type="submit">Comment</button>
 </form>
 
-{{#if user}}
+  {{#ifEquals user._id post.author}}
   <a href="/ad-edit/{{post._id}}">edit</a>
 
   <form action="/ad-details/{{post._id}}/delete" method="post">
     <button type="submit">Delete</button>
   </form>
+{{/ifEquals}}
 
-{{/if}}
 <a href="/profile/{{post.author}}">go back</a>

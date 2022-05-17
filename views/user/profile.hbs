@@ -1,12 +1,12 @@
 
 
-{{#if }}
+
 <a href="/profile/{{user._id}}/edit">edit your profile</a>
 
 <form action="/profile/{{user._id}}/delete" method="post">
     <button type="submit">Delete my profile</button>
   </form>
-  {{/if}}
+
   
 <img src="{{user.imageURL}}" alt="user image">
 <h2>Welcome, {{user.name}}</h2>
