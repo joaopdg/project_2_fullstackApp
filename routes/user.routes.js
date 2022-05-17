@@ -96,4 +96,5 @@ router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
   }
 });
 
+
 module.exports = router;
