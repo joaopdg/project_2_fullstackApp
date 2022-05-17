@@ -37,14 +37,16 @@ router.post("/ad-details/:commentid", (req, res, next) => {
 
   Comment.findById(commentid)
     .then((comment) => {
-      return Post.findById(comment.post._id);
-    })
-    .then((post) => {
-      Comment.findByIdAndRemove(commentid).then(() => console.log("removed"));
-      return post;
-    })
-    .then((post) => {
-      res.redirect(`/ad-details/${post._id}`);
+      console.log(comment.author, req.session.user._id);
+      if (comment.author != req.session.user._id) {
+        res.redirect("/auth");
+        return;
+      } else {
+        Comment.findByIdAndRemove(commentid).then((comment) => {
+          console.log("removed");
+          res.redirect(`/ad-details/${comment.post}`);
+        });
+      }
     })
     .catch((err) => console.log(err));
 });

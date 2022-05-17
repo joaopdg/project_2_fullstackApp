@@ -8,11 +8,14 @@
 
 {{#each post.comments}}
 
-  <p> <a href="/profile/{{author._id}}">{{author.name}}:</a> {{this.content}}</p>
+  <p>
+    <a href="/profile/{{author._id}}">{{author.name}}:</a>
+    {{this.content}}</p>
+
   <form action="/ad-details/{{_id}}" method="post">
     <button type="submit">Delete comment</button>
   </form>
-  
+
 {{/each}}
 
 <hr />
@@ -30,6 +33,6 @@
   <form action="/ad-details/{{post._id}}/delete" method="post">
     <button type="submit">Delete</button>
   </form>
-  
+
 {{/if}}
 <a href="/profile/{{post.author}}">go back</a>
