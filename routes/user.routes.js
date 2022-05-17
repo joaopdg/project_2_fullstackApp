@@ -5,6 +5,8 @@ const Post = require("../models/Post.model");
 const Comment = require("../models/Comment.model");
 const fileUpload = require("../config/cloudinary.config");
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
@@ -37,13 +39,27 @@ router.post(
   fileUpload.single("user-image"),
   (req, res, next) => {
     const { id } = req.params;
+
+
+
     if(req.session.user._id === id){
     const { name, email, password, location, address, contact } = req.body;
+
+    if (!password) {
+      return res.status(400).render("user/edit-profile", {
+        errorMessage: "Please provide a new password",
+      });
+    }
+
+    return bcrypt
+    .genSalt(saltRounds)
+    .then((salt) => bcrypt.hash(password, salt))
+    .then((hashedPassword) => {
     if (req.file) {
       User.findByIdAndUpdate(id, {
         name,
         email,
-        password,
+        password: hashedPassword,
         location,
         address,
         contact,
@@ -57,7 +73,7 @@ router.post(
       User.findByIdAndUpdate(id, {
         name,
         email,
-        password,
+        password: hashedPassword,
         location,
         address,
         contact,
@@ -66,7 +82,9 @@ router.post(
           res.redirect(`/profile/${id}`);
         })
         .catch((err) => next(err));
-    }
+    }})
+
+
   }else{
     res.redirect('/auth')
   }

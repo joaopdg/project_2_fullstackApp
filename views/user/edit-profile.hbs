@@ -13,7 +13,7 @@
   <input type="email" name="email" value="{{user.email}}" />
 
   <label for="password">Password:</label>
-  <input type="password" name="password" placeholder="new password here" />
+  <input type="password" name="password" placeholder="insert new password" required/>
 
   <label for="address">Address:</label>
   <input type="address" name="address" value="{{user.address}}" />
@@ -29,3 +29,6 @@
 
   <button type="submit">Edit your account</button>
 </form>
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
