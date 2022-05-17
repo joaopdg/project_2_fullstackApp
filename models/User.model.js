@@ -18,6 +18,11 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Please input a password"],
     },
+    
+    aboutMe:{
+      type:String,
+      required:true
+    },
 
     location: {
       type: String,

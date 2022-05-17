@@ -24,7 +24,7 @@ router.post(
   isLoggedOut,
   fileUpload.single("user-image"),
   (req, res) => {
-    const { name, email, password, address, location, contact } = req.body;
+    const { name, email, password, aboutMe, address, location, contact } = req.body;
 
     if (!name) {
       return res.status(400).render("auth/signup", {
@@ -58,6 +58,7 @@ router.post(
               name,
               email,
               password: hashedPassword,
+              aboutMe,
               address,
               location,
               contact,
@@ -68,6 +69,7 @@ router.post(
               name,
               email,
               password: hashedPassword,
+              aboutMe,
               address,
               location,
               contact,

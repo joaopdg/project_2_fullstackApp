@@ -1,21 +1,21 @@
-
-
-
+<div class="profileBody">
 <a href="/profile/{{user._id}}/edit">edit your profile</a>
 
 <form action="/profile/{{user._id}}/delete" method="post">
-    <button type="submit">Delete my profile</button>
-  </form>
-
-  
-<img src="{{user.imageURL}}" alt="user image">
-<h2>Welcome, {{user.name}}</h2>
-
-
-
-
-
-
+  <button type="submit">Delete my profile</button>
+</form>
+<div class="profileDiv">
+<div class="profileImgDiv">
+<img src="{{user.imageURL}}" alt="user image" />
+</div>
+<div class="profileInfoDiv">
+<h2> {{user.name}}</h2>
+<h4>About me: {{user.aboutMe}}</h4>
+<h4>Address: {{user.address}}</h4>
+<h4>Location: {{user.location}}</h4>
+<h4>Contact: {{user.contact}}</h4>
+</div>
+</div>
 {{#each ads}}
 
   <img src="{{imageURL}}" alt="image of{{title}}" />
@@ -26,3 +26,5 @@
   <a href="/ad-details/{{_id}}">View details</a>
 
 {{/each}}
+
+</div>

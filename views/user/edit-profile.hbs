@@ -13,7 +13,20 @@
   <input type="email" name="email" value="{{user.email}}" />
 
   <label for="password">Password:</label>
-  <input type="password" name="password" placeholder="insert new password" required/>
+  <input
+    type="password"
+    name="password"
+    placeholder="insert new password"
+    required
+  />
+
+  <label for="aboutMe">description:</label>
+  <textarea
+    name="aboutMe"
+    id="aboutMe"
+    cols="30"
+    rows="10"
+  >{{user.aboutMe}}</textarea>
 
   <label for="address">Address:</label>
   <input type="address" name="address" value="{{user.address}}" />

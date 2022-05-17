@@ -2,13 +2,16 @@
 <form action="/signup" method="POST" enctype="multipart/form-data">
 
   <label for="name">Name:</label>
-  <input type="text" name="name" placeholder="John Snow"/>
+  <input type="text" name="name" placeholder="John Snow" />
 
   <label for="email">Email:</label>
   <input type="email" name="email" placeholder="johnSnow@camelCase.com" />
 
   <label for="password">Password:</label>
   <input type="password" name="password" placeholder="enter password here" />
+
+  <label for="aboutMe">description:</label>
+  <textarea name="aboutMe" id="aboutMe" cols="30" rows="10"></textarea>
 
   <label for="address">Address:</label>
   <input type="address" name="address" placeholder="Jardim do Tabaco, 82 " />
@@ -17,9 +20,9 @@
   <input type="location" name="location" placeholder="Lisbon" />
 
   <label for="contact">Phone number:</label>
-  <input type="number" id="contact" name="contact" placeholder="999 999 999"/>
+  <input type="number" id="contact" name="contact" placeholder="999 999 999" />
 
-   <label for="image">Image:</label>
+  <label for="image">Image:</label>
   <input type="file" name="user-image" />
 
   <button type="submit">Create your account</button>

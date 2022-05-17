@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,4 +9,26 @@ a {
 
 h1 {
   color: 15px;
+}
+
+.profileBody {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileDiv {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid salmon;
+}
+
+.profileImgDiv {
+  border: 2px solid black;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }
