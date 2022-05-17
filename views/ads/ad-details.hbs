@@ -9,7 +9,7 @@
 {{#each post.comments}}
 
   <p> <a href="/profile/{{author._id}}">{{author.name}}:</a> {{this.content}}</p>
-  <form action="/ad-details/{{post._id}}/deletecom" method="post">
+  <form action="/ad-details/{{_id}}" method="post">
     <button type="submit">Delete comment</button>
   </form>
   

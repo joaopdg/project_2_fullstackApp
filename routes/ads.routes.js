@@ -77,7 +77,7 @@ router.get("/ad-details/:id", (req, res, next) => {
       },
     })
     .then((post) => {
-      res.render("ads/ad-details", { post, user: req.session.user });
+      res.render("ads/ad-details", { post: post, comments: post.comments, user: req.session.user });
     })
     .catch((err) => next(err));
 });
