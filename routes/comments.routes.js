@@ -13,7 +13,11 @@ router.post("/ad-details/:id/comments", (req, res, next) => {
     .then((post) => {
       let newComment;
 
-      newComment = new Comment({ author: req.session.user._id, post:post._id, content });
+      newComment = new Comment({
+        author: req.session.user._id,
+        post: post._id,
+        content,
+      });
 
       newComment.save().then((savedComment) => {
         post.comments.push(savedComment._id);
@@ -30,13 +34,13 @@ router.post("/ad-details/:id/comments", (req, res, next) => {
 
 router.post("/ad-details/:commentid", (req, res, next) => {
   const { commentid } = req.params;
+
   Comment.findById(commentid)
     .then((comment) => {
       return Post.findById(comment.post._id);
     })
     .then((post) => {
-      Comment.findByIdAndRemove(commentid)
-      .then(() => console.log("removed"))
+      Comment.findByIdAndRemove(commentid).then(() => console.log("removed"));
       return post;
     })
     .then((post) => {

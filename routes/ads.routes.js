@@ -84,12 +84,18 @@ router.get("/ad-details/:id", (req, res, next) => {
 
 router.get("/ad-edit/:id", (req, res, next) => {
   const { id } = req.params;
+  
+  if(req.session.user.posts.includes(id) ){
   Post.findById(id)
     .then((post) => {
       res.render("ads/ad-edit", { post, user: req.session.user });
     })
     .catch((err) => next(err));
-});
+  }else{
+    res.redirect('/auth')
+  }
+
+  });
 
 router.post(
   "/ad-edit/:id",
@@ -98,6 +104,7 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
     const { title, category, description, condition } = req.body;
+    if(req.session.user.posts.includes(id) ){
     if (req.file) {
       Post.findByIdAndUpdate(id, {
         title,
@@ -122,17 +129,23 @@ router.post(
         })
         .catch((err) => next(err));
     }
+  }else{
+    res.redirect('/auth')
+  }
   }
 );
 
 router.post("/ad-details/:id/delete", (req, res, next) => {
   const { id } = req.params;
-
+  if(req.session.user.posts.includes(id) ){
   Post.findByIdAndRemove(id)
     .then(() => {
       res.redirect(`/profile/${req.session.user._id}`);
     })
     .catch((err) => console.log(err));
+  }else{
+    res.redirect('/auth')
+  }
 });
 
 module.exports = router;
