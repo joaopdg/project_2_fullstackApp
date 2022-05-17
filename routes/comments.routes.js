@@ -28,4 +28,18 @@ router.post("/ad-details/:id/comments", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.post("/ad-details/:id/deletecom", (req, res, next) => {
+  const { id } = req.params;
+
+  Post.findById(id)
+    .then((post) => {
+      Comment.deleteOne(post.comments)
+    })
+      .then(() => {
+        res.redirect(`/profile/${req.session.user._id}`);
+      
+    })
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;

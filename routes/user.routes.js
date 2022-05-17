@@ -68,9 +68,17 @@ router.post(
 router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
 
-  req.session.destroy();
   User.findByIdAndRemove(id)
+    .then((user) => {
+      console.log(user);
+      return Post.deleteMany({_id: {$in: user.posts}});
+    })
+    .then(()=>{
+      return Comment.deleteMany({author: id})
+    })
     .then(() => {
+      
+      req.session.destroy();
       res.redirect("/");
     })
     .catch((err) => console.log(err));
