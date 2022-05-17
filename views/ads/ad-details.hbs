@@ -1,24 +1,58 @@
+<div class="postDetail">
+
+  <div class="postDetailImg">
+<img src="{{post.imageURL}}" alt="image of{{post.title}}" />
+</div>
+
+<div class="postDetailText">
 <h3>{{post.title}}</h3>
 <p><b>category:</b> {{post.category}}</p>
-<p><b>description:</b> {{post.description}}</p>
 <p><b>condition:</b> {{post.condition}}</p>
-<img src="{{post.imageURL}}" alt="image of{{post.title}}" />
+<p><b>{{post.description}}</p>
+</div>
 
-<hr />
+<div class="postDetailButtons">
+  {{#ifEquals user._id post.author}}
+  <a href="/ad-edit/{{post._id}}">edit</a>
+
+  <form action="/ad-details/{{post._id}}/delete" method="post">
+    <button type="submit">Delete</button>
+  </form>
+{{/ifEquals}}
+</div>
+
+</div>
+
+
+<div class="allComments">
 
 {{#each post.comments}}
 
-  <p>
-    <a href="/profile/{{author._id}}">{{author.name}}:</a>
-    {{this.content}}</p>
+<div class="eachComment">
 
+  <div class="commentHead">
+
+    <div class="commentHeadLeft">
+      <img src="{{author.imageURL}}" alt="avatar">
+  <p><a href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
+  </div>
+
+  <div class="commentHeadRight">
   {{#ifEquals ../user._id author._id}}
     <form action="/ad-details/{{_id}}" method="post">
       <button type="submit">Delete comment</button>
     </form>
 {{/ifEquals}}
+</div>
+</div>
+<div class="commentBody">
+  <p>{{this.content}}</p>
+  </div>
+  </div>
 
 {{/each}}
+
+  </div>
 
 <hr />
 
@@ -29,12 +63,6 @@
   <button type="submit">Comment</button>
 </form>
 
-  {{#ifEquals user._id post.author}}
-  <a href="/ad-edit/{{post._id}}">edit</a>
 
-  <form action="/ad-details/{{post._id}}/delete" method="post">
-    <button type="submit">Delete</button>
-  </form>
-{{/ifEquals}}
 
 <a href="/profile/{{post.author}}">go back</a>
