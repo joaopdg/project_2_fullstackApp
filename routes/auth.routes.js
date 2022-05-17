@@ -164,4 +164,11 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
+
+
+router.get("/auth", (req, res) => {
+  res.render("auth/error");
+});
+
+
 module.exports = router;

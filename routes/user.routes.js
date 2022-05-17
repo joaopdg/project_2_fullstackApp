@@ -20,11 +20,15 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
 
 router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
+  if(req.session.user._id === id){
   User.findById(id)
     .then((user) => {
       res.render("user/edit-profile", { user });
     })
     .catch((err) => next(err));
+  }else{
+    res.redirect('/auth')
+  }
 });
 
 router.post(
@@ -33,6 +37,7 @@ router.post(
   fileUpload.single("user-image"),
   (req, res, next) => {
     const { id } = req.params;
+    if(req.session.user._id === id){
     const { name, email, password, location, address, contact } = req.body;
     if (req.file) {
       User.findByIdAndUpdate(id, {
@@ -62,11 +67,15 @@ router.post(
         })
         .catch((err) => next(err));
     }
+  }else{
+    res.redirect('/auth')
+  }
   }
 );
 
 router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
+  if(req.session.user._id === id){
 
   User.findByIdAndRemove(id)
     .then((user) => {
@@ -82,6 +91,9 @@ router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
       res.redirect("/");
     })
     .catch((err) => console.log(err));
+  }else{
+    res.redirect('/auth')
+  }
 });
 
 module.exports = router;
