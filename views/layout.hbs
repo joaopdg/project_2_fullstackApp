@@ -14,45 +14,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
-
-
-
-
 <div style="margin:0 auto;width:900px">
 <ul id="nav">
+  <li><a href="/">home</a></li>
+  <li><a href="/list">view all ads</a></li>
+  {{#if user}}
+    <li><a href="/profile/{{user._id}}">profile</a></li>
+    <li><a href="/logout">logout</a></li>
+    <li><a href="/create-ad/{{user._id}}">create ad</a></li>
 <li id="notification_li">
-<span id="notification_count">3</span>
+
+
+<span id="notification_count">{{user.receivedReq.length}}</span>
 <a href="#" id="notificationLink">Notifications</a>
 <div id="notificationContainer">
-<div id="notificationTitle">Notifications</div>
 <div id="notificationsBody" class="notifications">
-</div>
-<div id="notificationFooter"><a href="#">See All</a></div>
+  {{#each user.receivedReq}}
+  <p>You have a new switch request</p>
+  {{/each}}
 </div>
 </li>
-</ul>
-</div>
 
 
-
-
-
-
-
-
-
-  <a href="/">home</a>
-  <a href="/list">view all ads</a>
-  {{#if user}}
-    <a href="/profile/{{user._id}}">profile</a>
-    <a href="/logout">logout</a>
-    <a href="/create-ad/{{user._id}}">create ad</a>
 
   {{else}}
 
     <a href="/signup">signup</a>
     <a href="/login">login</a>
   {{/if}}
+</ul>
+</div>
 
   <hr />
 
