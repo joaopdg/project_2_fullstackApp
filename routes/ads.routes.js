@@ -7,7 +7,7 @@ const Post = require("../models/Post.model");
 const Comment = require("../models/Comment.model");
 const fileUpload = require("../config/cloudinary.config");
 
-router.get("/list", isLoggedIn, (req, res, next) => {
+router.get("/list", (req, res, next) => {
   Post.find()
     .populate("author")
 
@@ -66,7 +66,7 @@ router.post(
   }
 );
 
-router.get("/ad-details/:id", (req, res, next) => {
+router.get("/ad-details/:id", isLoggedIn,(req, res, next) => {
   const { id } = req.params;
   Post.findById(id)
     .populate("comments")
