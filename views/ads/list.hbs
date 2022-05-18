@@ -1,11 +1,16 @@
-<h2>Hello!</h2>
-<h4>check all the ads available for switch ;) </h4>
+<div class="adsListBody">
+<h2>Ads available</h2>
+<div class="allAds">
 {{#each ads}}
-
+<div class="eachAd">
   <img src="{{imageURL}}" alt="item-photo" />
-  <h3>title: {{title}}</h3>
-  <p>description: {{description}}</p>
-  <p>consition: {{condition}}</p>
-  <p>category: {{category}}</p>
+  <h3>Title: {{title}}</h3>
+  <p>Condition: {{condition}}</p>
+  <p>Category: {{category}}</p>
+  <p>Posted by: <a href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
   <a href="/ad-details/{{_id}}">View details</a>
+
+</div>
 {{/each}}
+</div>
+</div>

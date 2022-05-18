@@ -9,6 +9,8 @@ const fileUpload = require("../config/cloudinary.config");
 
 router.get("/list", isLoggedIn, (req, res, next) => {
   Post.find()
+    .populate("author")
+
     .then((ads) => res.render("ads/list", { ads, user: req.session.user }))
     .catch((err) => next(err));
 });
@@ -77,25 +79,28 @@ router.get("/ad-details/:id", (req, res, next) => {
       },
     })
     .then((post) => {
-      res.render("ads/ad-details", { post: post, comments: post.comments, user: req.session.user });
+      res.render("ads/ad-details", {
+        post: post,
+        comments: post.comments,
+        user: req.session.user,
+      });
     })
     .catch((err) => next(err));
 });
 
 router.get("/ad-edit/:id", (req, res, next) => {
   const { id } = req.params;
-  
-  if(req.session.user.posts.includes(id) ){
-  Post.findById(id)
-    .then((post) => {
-      res.render("ads/ad-edit", { post, user: req.session.user });
-    })
-    .catch((err) => next(err));
-  }else{
-    res.redirect('/auth')
-  }
 
-  });
+  if (req.session.user.posts.includes(id)) {
+    Post.findById(id)
+      .then((post) => {
+        res.render("ads/ad-edit", { post, user: req.session.user });
+      })
+      .catch((err) => next(err));
+  } else {
+    res.redirect("/auth");
+  }
+});
 
 router.post(
   "/ad-edit/:id",
@@ -104,47 +109,47 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
     const { title, category, description, condition } = req.body;
-    if(req.session.user.posts.includes(id) ){
-    if (req.file) {
-      Post.findByIdAndUpdate(id, {
-        title,
-        category,
-        description,
-        condition,
-        imageURL: req.file.path,
-      })
-        .then((post) => {
-          res.redirect(`/ad-details/${id}`);
+    if (req.session.user.posts.includes(id)) {
+      if (req.file) {
+        Post.findByIdAndUpdate(id, {
+          title,
+          category,
+          description,
+          condition,
+          imageURL: req.file.path,
         })
-        .catch((err) => next(err));
+          .then((post) => {
+            res.redirect(`/ad-details/${id}`);
+          })
+          .catch((err) => next(err));
+      } else {
+        Post.findByIdAndUpdate(id, {
+          title,
+          category,
+          description,
+          condition,
+        })
+          .then((post) => {
+            res.redirect(`/ad-details/${id}`);
+          })
+          .catch((err) => next(err));
+      }
     } else {
-      Post.findByIdAndUpdate(id, {
-        title,
-        category,
-        description,
-        condition,
-      })
-        .then((post) => {
-          res.redirect(`/ad-details/${id}`);
-        })
-        .catch((err) => next(err));
+      res.redirect("/auth");
     }
-  }else{
-    res.redirect('/auth')
-  }
   }
 );
 
 router.post("/ad-details/:id/delete", (req, res, next) => {
   const { id } = req.params;
-  if(req.session.user.posts.includes(id) ){
-  Post.findByIdAndRemove(id)
-    .then(() => {
-      res.redirect(`/profile/${req.session.user._id}`);
-    })
-    .catch((err) => console.log(err));
-  }else{
-    res.redirect('/auth')
+  if (req.session.user.posts.includes(id)) {
+    Post.findByIdAndRemove(id)
+      .then(() => {
+        res.redirect(`/profile/${req.session.user._id}`);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    res.redirect("/auth");
   }
 });
 
