@@ -141,7 +141,6 @@ router.post(
 
 router.post("/ad-details/:id/delete", (req, res, next) => {
   const { id } = req.params;
-
   if (req.session.user.posts.includes(id)) {
     Post.findByIdAndRemove(id)
       .then(() => {
