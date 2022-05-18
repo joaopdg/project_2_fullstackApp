@@ -97,7 +97,6 @@ router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
 
   User.findByIdAndRemove(id)
     .then((user) => {
-      console.log(user);
       return Post.deleteMany({_id: {$in: user.posts}});
     })
     .then(()=>{
@@ -108,7 +107,7 @@ router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
       req.session.destroy();
       res.redirect("/");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
   }else{
     res.redirect('/auth')
   }

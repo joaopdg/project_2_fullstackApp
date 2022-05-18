@@ -29,7 +29,6 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
     const { title, category, description, condition } = req.body;
-    console.log("check file:", req.file);
     if (req.file) {
       Post.create({
         title,
@@ -142,7 +141,7 @@ router.post("/ad-details/:id/delete", (req, res, next) => {
     .then(() => {
       res.redirect(`/profile/${req.session.user._id}`);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
   }else{
     res.redirect('/auth')
   }
