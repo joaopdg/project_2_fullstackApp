@@ -3,13 +3,16 @@
 <div class="allAds">
 {{#each ads}}
 <div class="eachAd">
+  <div class="eachAdImg">
   <img src="{{imageURL}}" alt="item-photo" />
+  </div>
+  <div class="eachAdInfo">
   <h3>Title: {{title}}</h3>
   <p>Condition: {{condition}}</p>
   <p>Category: {{category}}</p>
   <p>Posted by: <a href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
   <a href="/ad-details/{{_id}}">View details</a>
-
+</div>
 </div>
 {{/each}}
 </div>
