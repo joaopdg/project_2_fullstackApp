@@ -1,11 +1,17 @@
-.authBox{
+.authBody{
+    height: 86vh;
+    
+}
+
+.innerauthBody{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.authBox form{
+
+.innerauthBody form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;

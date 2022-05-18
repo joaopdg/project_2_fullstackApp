@@ -19,6 +19,11 @@
     </div>
   </div>
   <div class="userAds">
+    {{#unless ads}}
+    
+    <h3>No ads created yet!</h3>
+    
+    {{/unless}}
     {{#each ads}}
       <div class="eachAd">
         <div class="eachAdImg">
