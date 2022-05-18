@@ -41,9 +41,11 @@ router.post(
         author: id,
       })
         .then((newAd) => {
-          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } });
+          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id }}, {new: true});
         })
-        .then(() => {
+        .then((user) => {
+          req.session.user = user;
+          req.app.locals.currentUser = user;
           res.redirect(`/profile/${id}`);
         })
         .catch((err) => next(err));
@@ -56,9 +58,11 @@ router.post(
         author: id,
       })
         .then((newAd) => {
-          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } });
+          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } }, {new: true});
         })
-        .then(() => {
+        .then((user) => {
+          req.session.user = user;
+          req.app.locals.currentUser = user;
           res.redirect(`/profile/${id}`);
         })
         .catch((err) => next(err));
@@ -116,7 +120,7 @@ router.post(
           description,
           condition,
           imageURL: req.file.path,
-        })
+        }, {new: true})
           .then((post) => {
             res.redirect(`/ad-details/${id}`);
           })
@@ -127,7 +131,7 @@ router.post(
           category,
           description,
           condition,
-        })
+        }, {new: true})
           .then((post) => {
             res.redirect(`/ad-details/${id}`);
           })

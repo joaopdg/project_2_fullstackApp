@@ -79,6 +79,7 @@ router.post(
         .then((user) => {
           // Bind the user to the session object
           req.session.user = user;
+          req.app.locals.currentUser = user;
           res.redirect("/");
         })
         .catch((error) => {
