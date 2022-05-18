@@ -41,7 +41,11 @@ router.post(
         author: id,
       })
         .then((newAd) => {
-          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id }}, {new: true});
+          return User.findByIdAndUpdate(
+            id,
+            { $push: { posts: newAd._id } },
+            { new: true }
+          );
         })
         .then((user) => {
           req.session.user = user;
@@ -58,7 +62,11 @@ router.post(
         author: id,
       })
         .then((newAd) => {
-          return User.findByIdAndUpdate(id, { $push: { posts: newAd._id } }, {new: true});
+          return User.findByIdAndUpdate(
+            id,
+            { $push: { posts: newAd._id } },
+            { new: true }
+          );
         })
         .then((user) => {
           req.session.user = user;
@@ -70,7 +78,7 @@ router.post(
   }
 );
 
-router.get("/ad-details/:id", isLoggedIn,(req, res, next) => {
+router.get("/ad-details/:id", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Post.findById(id)
     .populate("comments")
@@ -114,24 +122,32 @@ router.post(
     const { title, category, description, condition } = req.body;
     if (req.session.user.posts.includes(id)) {
       if (req.file) {
-        Post.findByIdAndUpdate(id, {
-          title,
-          category,
-          description,
-          condition,
-          imageURL: req.file.path,
-        }, {new: true})
+        Post.findByIdAndUpdate(
+          id,
+          {
+            title,
+            category,
+            description,
+            condition,
+            imageURL: req.file.path,
+          },
+          { new: true }
+        )
           .then((post) => {
             res.redirect(`/ad-details/${id}`);
           })
           .catch((err) => next(err));
       } else {
-        Post.findByIdAndUpdate(id, {
-          title,
-          category,
-          description,
-          condition,
-        }, {new: true})
+        Post.findByIdAndUpdate(
+          id,
+          {
+            title,
+            category,
+            description,
+            condition,
+          },
+          { new: true }
+        )
           .then((post) => {
             res.redirect(`/ad-details/${id}`);
           })
@@ -155,5 +171,7 @@ router.post("/ad-details/:id/delete", (req, res, next) => {
     res.redirect("/auth");
   }
 });
+
+
 
 module.exports = router;
