@@ -31,7 +31,6 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
     const { title, category, description, condition } = req.body;
-    console.log("check file:", req.file);
     if (req.file) {
       Post.create({
         title,
@@ -142,6 +141,7 @@ router.post(
 
 router.post("/ad-details/:id/delete", (req, res, next) => {
   const { id } = req.params;
+
   if (req.session.user.posts.includes(id)) {
     Post.findByIdAndRemove(id)
       .then(() => {

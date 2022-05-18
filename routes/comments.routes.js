@@ -37,18 +37,16 @@ router.post("/ad-details/:commentid", (req, res, next) => {
 
   Comment.findById(commentid)
     .then((comment) => {
-      console.log(comment.author, req.session.user._id);
       if (comment.author != req.session.user._id) {
         res.redirect("/auth");
         return;
       } else {
         Comment.findByIdAndRemove(commentid).then((comment) => {
-          console.log("removed");
           res.redirect(`/ad-details/${comment.post}`);
         });
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
 });
 
 module.exports = router;
