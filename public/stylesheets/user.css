@@ -1,0 +1,22 @@
+.profileBody {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profileDiv {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid salmon;
+  }
+  
+  .profileImgDiv {
+    border: 2px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+  
