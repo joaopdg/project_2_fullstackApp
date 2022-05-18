@@ -46,6 +46,9 @@ const userSchema = new Schema(
     },
 
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+
+    sentReq: [{ type: Schema.Types.ObjectId, ref: "Request" }],
+    receivedReq: [{ type: Schema.Types.ObjectId, ref: "Request" }],
   },
   {
     timestamps: true,
