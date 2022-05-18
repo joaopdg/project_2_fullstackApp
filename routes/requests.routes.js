@@ -25,33 +25,34 @@ router.get("/ad-details/:id/request", isLoggedIn, (req, res, next) => {
 router.post(
   "/ad-details/:id/request",
   isLoggedIn,
-  (req, res, next) => {
+  async (req, res, next) => {
     const { id } = req.params;
     const { sender, receiver, message, senderItem, receiverItem } = req.body;
 
-    Request.create({
+let request = await Request.create({
       sender,
       receiver,
       message,
       senderItem,
       receiverItem: id,
     })
-      .then((newReq) => {
-        User.findByIdAndUpdate(
-          newReq.receiver,
-          { $push: { receivedReq: newReq._id } },
-          { new: true }
-        );
-        User.findByIdAndUpdate(
-          newReq.sender,
-          { $push: { sentReq: newReq._id } },
-          { new: true }
-        );
-      })
-      .then(() => {
+
+   await User.findByIdAndUpdate(
+          request.receiver,
+          { $push: { receivedReq: request._id } },
+          { new: true } )
+
+    
+  
+    await User.findByIdAndUpdate(
+         request.sender,
+         { $push: { sentReq: request._id } },
+         { new: true }
+       );
+   
         res.redirect(`/ad-details/${id}`);
-      })
-      .catch((err) => next(err));
+    
+  
   }
 );
 
