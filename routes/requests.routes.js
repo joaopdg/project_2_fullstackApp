@@ -80,9 +80,13 @@ router.get("/request/:id/accept", isLoggedIn, (req, res, next) => {
 
 router.get("/request/:id/reject", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  Request.findByIdAndRemove(id)
-    .then(() => {
-      res.redirect("/");
+  Request.findByIdAndUpdate(id, {status: false}, {new: true})
+  .then((request) => {
+    User.findByIdAndUpdate(request.receiver, {receivedReq: receivedReq.splice(request._id, 1)})
+  })
+
+    .then((request) => {
+      res.render("ads/req-response",  request );
     })
     .catch((err) => next(err));
 });
