@@ -8,76 +8,66 @@
   align-items: center;
 }
 
-.borderAdCreate{
+.borderAdCreate {
   border: 2px solid lightgray;
   border-radius: 25px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   padding: 40px;
   margin-top: 50px;
 }
-.borderAdCreate h2{
+.borderAdCreate h2 {
   margin-top: 0;
 }
-.titleadCreate{
+.titleadCreate {
   display: flex;
   justify-content: center;
 }
-.createAdForm{
+.createAdForm {
   width: 25vw;
   height: 60vh;
-  
 }
 .createAdForm form {
   display: flex;
   flex-direction: column;
-  align-items:flex-start
+  align-items: flex-start;
 }
-.formAdCreate input, textarea, select{
+.formAdCreate input,
+textarea,
+select {
   margin-bottom: 10px;
   width: 25vw;
 }
-
 
 .adCreatebtnDiv {
   width: 25vw;
   margin-top: 15px;
   display: flex;
   justify-content: space-around;
-  
 }
 .adCreatebtn {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:12px;
-	font-weight:bold;
-	padding:4px 15px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #777777;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 .adCreatebtn:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
+  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  background-color: #dfdfdf;
 }
 .adCreatebtn:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-
-
-
-
-
-
-
-
-
 
 /* edit ad  */
 .adEditBody {
@@ -88,7 +78,7 @@
   align-items: center;
 }
 
-.editAdBorder{
+.editAdBorder {
   border: 2px solid lightgray;
   border-radius: 25px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -96,9 +86,9 @@
   margin-top: 30px;
 }
 
-.editAdTitle{
-display: flex;
-justify-content: center;
+.editAdTitle {
+  display: flex;
+  justify-content: center;
 }
 
 .adEditForm form {
@@ -106,44 +96,45 @@ justify-content: center;
   flex-direction: column;
   align-items: flex-start;
 }
-.adEditForm{
+.adEditForm {
   width: 25vw;
   height: 60vh;
-  
 }
-.formAdEdit input, textarea, select{
+.formAdEdit input,
+textarea,
+select {
   margin-bottom: 15px;
   width: 25vw;
 }
-.adEditbtnDiv{
+.adEditbtnDiv {
   width: 25vw;
   margin-top: 15px;
-  
+
   display: flex;
   justify-content: space-around;
 }
 
 .adEditbtn {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:12px;
-	font-weight:bold;
-	padding:4px 15px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #777777;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 .adEditbtn:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
+  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  background-color: #dfdfdf;
 }
 .adEditbtn:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
