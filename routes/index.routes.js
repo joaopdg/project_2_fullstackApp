@@ -57,6 +57,12 @@ router.get("/", (req, res, next) => {
           model: "Post",
         },
       })
+      .populate({
+        path: "sentReq",
+        populate: {
+          path: "status",
+        },
+      })
       .then((newUser) => {
         req.app.locals.currentUser = newUser;
         res.render("index", { user: req.session.user });
