@@ -51,7 +51,7 @@
   </div>
   {{/each}}
   {{#each currentUser.sentReq}}
-    {{#if currentUser.sentReq.status}}
+    {{#if status}}
     <p>Your request has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
     {{/if}}
   {{/each}}
