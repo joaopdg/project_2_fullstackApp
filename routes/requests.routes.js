@@ -54,7 +54,7 @@ router.post("/ad-details/:id/request", isLoggedIn, async (req, res, next) => {
 
 router.get("/request/:id/accept", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  Request.findById(id)
+  Request.findByIdAndUpdate(id, {status: true}, {new: true})
 
     .populate({
         path: "sender",
@@ -80,16 +80,9 @@ router.get("/request/:id/accept", isLoggedIn, (req, res, next) => {
 
 router.get("/request/:id/reject", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  Request.findById(id)
-    .populate("posts")
-
-    .then((user) => {
-      Post.findById(id).then((post) => {
-        res.render("ads/req-response", {
-          post,
-          user,
-        });
-      });
+  Request.findByIdAndRemove(id)
+    .then(() => {
+      res.redirect("/");
     })
     .catch((err) => next(err));
 });

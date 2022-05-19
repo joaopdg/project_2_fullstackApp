@@ -44,9 +44,9 @@
   <p><a href="/profile/{{sender._id}}">{{sender.name}}</a> wants to switch <a href="/ad-details/{{senderItem._id}}">{{senderItem.title}}</a> with your <a href="/ad-details/{{receiverItem._id}}">{{receiverItem.title}}</a></p>
 </div>
   <div class="notifButtons">
-  <form action="/request/{{_id}}/accept" method="post">
+  <form action="/request/{{_id}}/accept" method="get">
   <button type="submit">Accept</button></form>
-  <form action="/request/{{_id}}/reject" method="post">
+  <form action="/request/{{_id}}/reject" method="get">
   <button type="submit">Reject</button></form>
   </div>
   {{/each}}
