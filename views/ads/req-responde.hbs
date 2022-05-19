@@ -1,0 +1,76 @@
+{{#unless request.status}}
+
+<h2>New Switch request </h2>
+<div class="senderCard">
+<h3>{{sender.name}}</h3>
+<h4>Bio: {{sender.aboutMe}}</h4>
+
+
+<h3>{{sender.post.title}}</h3>
+<img src="{{sender.post.imageURL}}" alt="{{sender.post.title}}">
+<p><b>category:</b> {{sender.post.category}}</p>
+<p><b>condition:</b> {{sender.post.condition}}</p>
+<p><b>{{sender.post.description}}</p>
+</div>
+
+<div class="receiverCard">
+<h3>{{receiver.name}}</h3>
+<h4>Bio: {{receiver.aboutMe}}</h4>
+<h4>Address: {{receiver.address}}</h4>
+<h4>Location: {{receiver.location}}</h4>
+<h4>Contact: {{receiver.contact}}</h4>
+
+<h3>{{receiver.post.title}}</h3>
+<img src="{{receiver.post.imageURL}}" alt="{{receiver.post.title}}">
+<p><b>category:</b> {{receiver.post.category}}</p>
+<p><b>condition:</b> {{receiver.post.condition}}</p>
+<p><b>{{receiver.post.description}}</p>
+</div>
+
+<form action="/request/{{request._id}}" method="post">
+    <button>Accept</button>
+</form>
+
+<form action="/request/{{request._id}}" method="post">
+    <button>Decline</button>
+</form>
+
+{{/unless}}
+
+{{#ifEquals request.status true}}
+<h2>Switch request accepted</h2>
+
+<h3>{{sender.name}}</h3>
+<h4>Bio: {{sender.aboutMe}}</h4>
+<h4>Address: {{sender.address}}</h4>
+<h4>Location: {{sender.location}}</h4>
+<h4>Contact: {{sender.contact}}</h4>
+
+<h3>{{sender.post.title}}</h3>
+<img src="{{sender.post.imageURL}}" alt="{{sender.post.title}}">
+<p><b>category:</b> {{sender.post.category}}</p>
+<p><b>condition:</b> {{sender.post.condition}}</p>
+<p><b>{{sender.post.description}}</p>
+</div>
+
+
+<h3>{{receiver.name}}</h3>
+<h4>Bio: {{receiver.aboutMe}}</h4>
+<h4>Address: {{receiver.address}}</h4>
+<h4>Location: {{receiver.location}}</h4>
+<h4>Contact: {{receiver.contact}}</h4>
+
+<h3>{{receiver.post.title}}</h3>
+<img src="{{receiver.post.imageURL}}" alt="{{receiver.post.title}}">
+<p><b>category:</b> {{receiver.post.category}}</p>
+<p><b>condition:</b> {{receiver.post.condition}}</p>
+<p><b>{{receiver.post.description}}</p>
+</div>
+{{/ifEquals}}
+
+{{#ifEquals request.status false}}
+
+<h3>Switch request not accepted</h3>
+<p>Return to <a href="/list">All Ads"></a> page to check other items abailable for switch </p>
+
+{{}}
