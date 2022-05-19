@@ -31,7 +31,7 @@
       ></textarea>
 
 <label for="senderItem">Choose the item you want to switch:</label>
-<select id="senderItem" name="senderItem">
+<select id="senderItem" name="senderItem" required>
     {{#each user.posts}}
         <option value="{{_id}}">{{title}}</option>
        {{/each}}
