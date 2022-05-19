@@ -17,7 +17,7 @@
 </div>
 
 <div class="formRequestdiv">
-<form
+<form class="sendRequestForm"
       action="/ad-details/{{post._id}}/request" method="POST" >
 <input type="hidden" name="sender" class="sender" value="{{user._id}}">
 <input type="hidden" name="receiver" class="receiver" value="{{post.author}}">
@@ -36,8 +36,11 @@
         <option value="{{_id}}">{{title}}</option>
        {{/each}}
 </select>
+<div class="sendSwitchReqBtnDiv">
+        <button  class="sendSwitchReqBtn"
+      type="submit">Send Switch request</button>
+      </div>
 
-      <button type="submit">Send Switch request</button>
     </form>
 </div>
 </div>
