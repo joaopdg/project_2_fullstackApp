@@ -50,14 +50,11 @@
   <button type="submit">Reject</button></form>
   </div>
   {{/each}}
+    {{#ifEquals currentUser.sentReq.status true}}
   {{#each currentUser.sentReq}}
-    {{#ifEquals currentUser.sentReq.status accepted}}
     <p>Your request has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
-    {{/ifEquals}}
-    {{#ifEquals currentUser.sentReq.status rejected}}
-    <p>Your request has been rejected! </p>
-    {{/ifEquals}}
   {{/each}}
+    {{/ifEquals}}
 </div>
 </li>
 </ul>

@@ -53,7 +53,7 @@ router.get("/request/:id/accept", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   let request = await Request.findByIdAndUpdate(
     id,
-    { status: 'accepted' },
+    { status: true },
     { new: true }
   )
 
@@ -84,7 +84,7 @@ router.get("/request/:id/reject", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   let request = await Request.findByIdAndUpdate(
     id,
-    { status: 'rejected' },
+    { status: false },
     { new: true }
   );
 
@@ -92,7 +92,7 @@ router.get("/request/:id/reject", isLoggedIn, async (req, res, next) => {
     $pull: { receivedReq: request._id },
   });
 
-  res.render("ads/req-denied", request);
+  res.redirect('/');
 });
 
 module.exports = router;
