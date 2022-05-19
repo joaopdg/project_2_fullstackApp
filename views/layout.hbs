@@ -21,26 +21,26 @@
   <body>
 
 <div class="navBar">
-<ul id="nav">
-  <li><a href="/">home</a></li>
-  <li><a href="/list">view all ads</a></li>
+  <a href="/">home</a>
+  <a href="/list">view all ads</a>
+
   {{#if user}}
-    <li><a href="/profile/{{user._id}}">profile</a></li>
-    <li><a href="/logout">logout</a></li>
-    <li><a href="/create-ad/{{user._id}}">create ad</a></li>
+    <a href="/profile/{{user._id}}">profile</a>
+    <a href="/logout">logout</a>
+    <a href="/create-ad/{{user._id}}">create ad</a>
+
+<ul id="nav">
 <li id="notification_li">
-
-
 <span id="notification_count">{{user.receivedReq.length}}</span>
 <a href="#" id="notificationLink">Notifications</a>
 <div id="notificationContainer">
 <div id="notificationsBody" class="notifications">
   {{#each currentUser.receivedReq}}
-  <p>{{sender.name}} wants to switch his {{senderItem.title}} with your {{receiverItem.title}}</p>
-  <a href="/{{_id}}/accept">Atag</a>
-  <form action="/{{_id}}/accept" method="post">
+  <img src="{{senderItem.ImageURL}}" alt="senderItem.title">
+  <p>{{sender.name}} wants to switch {{senderItem.title}} with your {{receiverItem.title}}</p>
+  <form action="/request/{{_id}}/accept" method="post">
   <button type="submit">Accept</button></form>
-  <form action="/{{_id}}/reject" method="post">
+  <form action="/request/{{_id}}/reject" method="post">
   <button type="submit">Reject</button></form>
   {{/each}}
 </div>
@@ -48,12 +48,12 @@
 
 
 
+</ul>
   {{else}}
 
     <a href="/signup">signup</a>
     <a href="/login">login</a>
   {{/if}}
-</ul>
 </div>
 
     {{{body}}}
