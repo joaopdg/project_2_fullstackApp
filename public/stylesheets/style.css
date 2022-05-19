@@ -4,6 +4,8 @@ body {
   padding: 0px;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+  z-index: -1;
 }
 
 a {
@@ -17,7 +19,7 @@ h1 {
 
 /* navbar */
 
-.navBar {
+.navB {
   width: 100%;
   height: 50px;
   display: flex;
@@ -58,7 +60,7 @@ h1 {
   top: 30px;
   margin-left: -170px;
   width: 400px;
-  z-index: 0;
+  z-index: 2;
   display: none; /* Enable this after jquery implementation */
 }
 /* Popup Arrow*/
@@ -83,12 +85,12 @@ h1 {
   background: #cc0000;
   color: #ffffff;
   font-weight: bold;
-  margin-left: 77px;
+  margin-left: 30px;
   border-radius: 9px;
   -moz-border-radius: 9px;
   -webkit-border-radius: 9px;
   position: absolute;
-  margin-top: -11px;
+  margin-top: 1px;
   font-size: 11px;
 }
 
@@ -99,7 +101,9 @@ h1 {
   height: 30vw;
   background-image: url("/images/bgindex.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
+  position: relative;
+  z-index: -1;
 }
 .indexInfo {
   width: 50%;

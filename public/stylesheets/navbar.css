@@ -1,26 +1,59 @@
-/* Navbar container */
-.navbar {
-    overflow: hidden;
-    background-color: rgb(255, 255, 255);
-    font-family: Arial;
-    z-index: 0;
-  }
+.barra{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+}
 
-.navbar img{
+.barraRight{
+  width: auto;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.createAD{
+  font-size: 18px;
+  width: 140px;
+}
+
+.barraLeft {
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+
+
+.dropdown-content a {
+  font-size: 18px;
+}
+
+.barraLeft img{
   width: 150px;
   margin-left: 20px;
 }
 
+.barraLeft a{
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 20px;
+  color: black;
+}
 
-  /* Links inside the navbar */
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+.barraLeft a:hover {
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 20px;
+  color: rgb(232, 225, 16);
+}
+
+.navProfile, .notybell{
+  width: 40px;
+}
+
   
   /* The dropdown container */
   .dropdown {
@@ -74,3 +107,34 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+
+
+
+
+  .myButtonG {
+    box-shadow: 0px 1px 0px 0px #fff6af;
+    background:linear-gradient(to bottom, #ffec64 5%, #e6e318 100%);
+    background-color:#ffec64;
+    border-radius:6px;
+    border:1px solid #e6e318;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffee66;
+  }
+  .myButtonG:hover {
+    background:linear-gradient(to bottom, #e6e318 5%, #ffec64 100%);
+    background-color:#e6e318;
+  }
+  .myButtonG:active {
+    position:relative;
+    top:1px;
+  }
+  
+          
