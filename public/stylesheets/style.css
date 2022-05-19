@@ -57,10 +57,11 @@ h1 {
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
   overflow: visible;
   position: absolute;
-  top: 30px;
-  margin-left: -170px;
-  width: 400px;
+  top: 45px;
+  margin-left: -180px;
+  width: 360px;
   z-index: 2;
+  padding: 10px;
   display: none; /* Enable this after jquery implementation */
 }
 /* Popup Arrow*/
@@ -77,7 +78,7 @@ h1 {
   margin-left: 188px;
 }
 #notificationsBody {
-  padding: 33px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px !important;
   min-height: 300px;
 }
 #notification_count {
@@ -137,3 +138,107 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+form label{
+  font-size: 20px;
+}
+
+form input{
+  height: 40px;
+}
+
+form button{
+  font-size: 20px;
+}
+
+.listBody{
+  width:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 100px 0px 200px 0px;
+}
+
+.homeBody{
+  width: 100%;
+}
+
+.quote{
+  background-color: #CDCDCD;
+  position: relative;
+  z-index: -5
+}
+
+.indexText h2{
+
+  font-size: 25px;
+  margin: 130px 0px 100px 0px;
+  width: 60vw;
+  text-align: center;
+}
+.homeList h1{
+  text-align: center;
+}
+.homeList{
+  font-size: 25px;
+}
+
+.sImage{
+  display: flex;
+  flex-direction: row;
+  margin-top: 120px;
+  margin-right: 180px;
+}
+.sImage img{
+width: 300px;
+height: 300px;
+}
+
+.homeList ol li{
+  margin-bottom: 10px;
+}
+
+.homeRow{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recNoty{
+  border-bottom: 1px solid black;
+}
+
+.notifButtons{
+  display: flex;
+  flex-direction: ;
+  justify-content: space-evenly;
+}
+
+.notif img{
+  margin-right: 20px;
+}
+
+
+.greyBar{
+  background-color: lightgray;
+}
+
+.greyBar p{
+  margin: 0px;
+  background-color: lightgray;
+  padding-top: 5px;
+}
+
+.yellow b{
+  text-decoration: none;
+  color: #e6e218;
+  background-color: gray;
+  padding: 2px 4px;
+}
+
+
+
+
+

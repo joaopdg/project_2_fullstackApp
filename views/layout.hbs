@@ -43,8 +43,13 @@
   <span id="notification_count">{{user.receivedReq.length}}</span>
   <a href="#" id="notificationLink"><img src="/images/notification.png" class="notybell"></a>
   <div id="notificationContainer">
+    <div class="greyBar">
+    <p>Received requests:</p>
+    <hr />
+    </div>
   <div id="notificationsBody" class="notifications">
   {{#each currentUser.receivedReq}}
+  <div class="recNoty">
   <div class="notif">
   <div class="notifImage">
   <img src="{{senderItem.imageURL}}">
@@ -54,14 +59,20 @@
   </div>
   <div class="notifButtons">
   <form action="/request/{{_id}}/accept" method="get">
-  <button type="submit">Accept</button></form>
+  <button type="submit" class="myButtonG">Accept</button></form>
   <form action="/request/{{_id}}/reject" method="get">
-  <button type="submit">Reject</button></form>
+  <button type="submit" class="myButtonG">Reject</button></form>
+  </div>
   </div>
   {{/each}}
+  <div class="greyBar">
+      <p>Sent requests:</p>
+    <hr />
+    </div>
   {{#each currentUser.sentReq}}
     {{#if status}}
-    <p>Your request of {{receiver.name}}has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
+    <p>Your switch request to <b>{{receiver.name}}</b> has been accepted! Check the details <a class="yellow" href="/request/{{_id}}/accept"><b>HERE</b></a></p>
+    <hr />
     {{/if}}
   {{/each}}
   </div>
