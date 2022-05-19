@@ -22,8 +22,6 @@ router.get("/ad-details/:id/request", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-
-
 router.post("/ad-details/:id/request", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   const { sender, receiver, message, senderItem, receiverItem } = req.body;
@@ -51,44 +49,50 @@ router.post("/ad-details/:id/request", isLoggedIn, async (req, res, next) => {
   res.redirect(`/ad-details/${id}`);
 });
 
-
-router.get("/request/:id/accept", isLoggedIn, (req, res, next) => {
+router.get("/request/:id/accept", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
-  Request.findByIdAndUpdate(id, {status: true}, {new: true})
+  let request = await Request.findByIdAndUpdate(
+    id,
+    { status: true },
+    { new: true }
+  )
 
     .populate({
-        path: "sender",
-        model: "User",
+      path: "sender",
+      model: "User",
     })
     .populate({
-        path: "senderItem",
-        model: "Post",
+      path: "senderItem",
+      model: "Post",
     })
     .populate({
-        path: "receiverItem",
-        model: "Post",
+      path: "receiverItem",
+      model: "Post",
     })
     .populate({
-        path: "receiver",
-        model: "User",
-    })
-    .then((request) => {
-      res.render("ads/req-response",  request );
-    })
-    .catch((err) => next(err));
+      path: "receiver",
+      model: "User",
+    });
+  await User.findByIdAndUpdate(request.receiver._id, {
+    $pull: { receivedReq: request._id },
+  });
+
+  res.render("ads/req-response", request);
 });
 
-router.get("/request/:id/reject", isLoggedIn, (req, res, next) => {
+router.get("/request/:id/reject", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
-  Request.findByIdAndUpdate(id, {status: false}, {new: true})
-  .then((request) => {
-    User.findByIdAndUpdate(request.receiver, {receivedReq: receivedReq.splice(request._id, 1)})
-  })
+  let request = await Request.findByIdAndUpdate(
+    id,
+    { status: false },
+    { new: true }
+  );
 
-    .then((request) => {
-      res.render("ads/req-response",  request );
-    })
-    .catch((err) => next(err));
+  await User.findByIdAndUpdate(request.receiver, {
+    $pull: { receivedReq: request._id },
+  });
+
+  res.render("ads/req-response", request);
 });
 
 module.exports = router;
