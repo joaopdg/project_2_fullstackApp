@@ -3,6 +3,13 @@
   <div class="titleEditProfile">
 <h2>Edit your profile</h2>
 </div>
+
+
+
+<form class="profDel" action="/profile/{{user._id}}/delete" method="post">
+    <button type="submit">Delete my profile</button>
+  </form>
+
 <div class="editProfileForm">
 <form class="formEditProfile"
   action="/profile/{{user._id}}/edit"
@@ -47,6 +54,9 @@
 <div class="editPtofilebtnDiv">
   <button class="editProfileBtn" type="submit">Edit your account</button></div>
 </form>
+
+
+
 </div>
 {{#if errorMessage}}
   {{errorMessage}}
