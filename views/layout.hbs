@@ -36,25 +36,32 @@
 <div id="notificationContainer">
 <div id="notificationsBody" class="notifications">
   {{#each currentUser.receivedReq}}
-  <img src="{{senderItem.ImageURL}}" alt="senderItem.title">
-  <p>{{sender.name}} wants to switch {{senderItem.title}} with your {{receiverItem.title}}</p>
+<div class="notif">
+<div class="notifImage">
+  <img src="{{senderItem.imageURL}}">
+  </div>
+
+  <p><a href="/profile/{{sender._id}}">{{sender.name}}</a> wants to switch <a href="/ad-details/{{senderItem._id}}">{{senderItem.title}}</a> with your <a href="/ad-details/{{receiverItem._id}}">{{receiverItem.title}}</a></p>
+</div>
+  <div class="notifButtons">
   <form action="/request/{{_id}}/accept" method="post">
   <button type="submit">Accept</button></form>
   <form action="/request/{{_id}}/reject" method="post">
   <button type="submit">Reject</button></form>
+  </div>
   {{/each}}
 </div>
 </li>
-
-
-
 </ul>
-  {{else}}
 
+  {{else}}
     <a href="/signup">signup</a>
     <a href="/login">login</a>
   {{/if}}
 </div>
+
+
+
 
     {{{body}}}
 
