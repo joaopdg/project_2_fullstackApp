@@ -3,7 +3,9 @@ const User = require("../models/User.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-
+if (!req.session.user){
+  res.render("index");
+}else{
   User.findById(req.session.user._id)
   .populate('receivedReq')
   .populate({
@@ -31,7 +33,7 @@ router.get("/", (req, res, next) => {
     req.app.locals.currentUser = newUser;
     res.render("index", {user:req.session.user});
 
-  })
+  })}
 
 });
 
