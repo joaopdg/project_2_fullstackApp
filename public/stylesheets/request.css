@@ -1,28 +1,88 @@
 /* NOTIFICATIONS */
-.notif{
+.notif {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.notifImage img{
-width: 50px;
-height: 50px;
+.notifImage img {
+  width: 50px;
+  height: 50px;
 }
 
-.notifButtons{
+.notifButtons {
   display: flex;
   flex-direction: row;
 }
 
-
-
-
-/* FORM */
+/* REQUEST FORM */
 .formRequestDiv {
   width: 100%;
   height: 50vh;
   display: flex;
   justify-content: center;
   padding-top: 30px;
+}
+
+/* REQUEST RESPONSE VIEW */
+
+.reqResBody {
+  width: 100vw;
+}
+
+.requestAcceptmsg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reqAccept {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.requestCard {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+
+.senderReqInfo{
+width: 400px;
+min-height: 700px;
+border: 2px solid black;
+padding: 20px;
+}
+
+.receiverReqInfo{
+  width: 400px;
+  min-height: 700px;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+.finalMsg{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.senderSender img{
+  width: 150px;
+  height: 150px;
+}
+.senderItem img{
+  width: 150px;
+  height: 150px;
+}
+.receiverReceiver img{
+  width: 150px;
+  height: 150px;
+}
+.receiverItem img{
+  width: 150px;
+  height: 150px;
 }
