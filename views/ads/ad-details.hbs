@@ -38,6 +38,7 @@
   <p>No comments yet!</p>
 {{/unless}}
 
+
 {{#each post.comments}}
 
 <div class="eachComment">
@@ -68,7 +69,7 @@
 
 <div class="writteComment">
 <form class="formComment" action="/ad-details/{{post._id}}/comments" method="post">
-  <textarea id="content" name="content" rows="4" cols="50" >Write your text here
+  <textarea id="content" name="content" rows="4" cols="50" >
   </textarea>
   <button class="commentBtn"
   type="submit">Comment</button>

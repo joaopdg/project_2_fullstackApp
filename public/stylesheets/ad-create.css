@@ -2,7 +2,7 @@
 
 .creatAdBody {
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +14,7 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   padding: 40px;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .borderAdCreate h2 {
   margin-top: 0;
@@ -24,7 +25,8 @@
 }
 .createAdForm {
   width: 25vw;
-  height: 60vh;
+  height: 65vh;
+  
 }
 .createAdForm form {
   display: flex;
@@ -36,7 +38,10 @@ textarea,
 select {
   margin-bottom: 10px;
   width: 25vw;
+  border: 2px solid lightgray;
+margin-top: 5px;
 }
+
 
 .adCreatebtnDiv {
   width: 25vw;
@@ -84,6 +89,8 @@ select {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   padding: 20px 40px 50px 40px;
   margin-top: 30px;
+  margin-bottom: 30px;
+  height: 75vh;
 }
 
 .editAdTitle {
@@ -105,6 +112,8 @@ textarea,
 select {
   margin-bottom: 15px;
   width: 25vw;
+  border: 2px solid lightgray;
+  margin-top: 5px;
 }
 .adEditbtnDiv {
   width: 25vw;
