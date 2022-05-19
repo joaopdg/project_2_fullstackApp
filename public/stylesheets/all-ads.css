@@ -1,17 +1,46 @@
-.adsListBody{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.adsListBody {
+  width: 100vw;
+  min-height: 87vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.allAds{
-    width: 70vw;
-    border: 2px solid salmon;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-
+.allAds {
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
+.eachAd {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  width: 15vw;
+  height: 45vh;
+  margin: 30px 10px 10px 10px;
+  padding: 10px;
+}
+
+.eachAdImg {
+  display: flex;
+  justify-content: center;
+}
+
+.eachAdImg img {
+  width: 110px;
+  height: 120px;
+}
+.authorNameHref {
+  text-decoration: none;
+  color: #e6e218;
+}

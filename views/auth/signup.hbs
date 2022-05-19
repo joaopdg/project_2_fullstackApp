@@ -1,7 +1,8 @@
 <div class="authBody">
-<div class="innerauthBody">
+
 <h2>SIGNUP</h2>
-<form action="/signup" method="POST" enctype="multipart/form-data">
+<div class="signUpFormDiv">
+<form class="formSignUp" action="/signup" method="POST" enctype="multipart/form-data">
 
   <label for="name">Name:</label>
   <input type="text" name="name" placeholder="John Snow" />
@@ -11,9 +12,6 @@
 
   <label for="password">Password:</label>
   <input type="password" name="password" placeholder="enter password here" />
-
-  <label for="aboutMe">Bio:</label>
-  <textarea name="aboutMe" id="aboutMe" cols="30" rows="10"></textarea>
 
   <label for="address">Address:</label>
   <input type="address" name="address" placeholder="Jardim do Tabaco, 82 " />
@@ -26,12 +24,18 @@
 
   <label for="image">Image:</label>
   <input type="file" name="user-image" />
+  
+  <label for="aboutMe">Bio:</label>
+  <textarea name="aboutMe" id="aboutMe" cols="30" rows="5"></textarea>
 
-  <button type="submit">Create your account</button>
+
+<div class="signUpbtnDiv">
+  <button class="signUpBtn" type="submit">Create your account</button></div>
 </form>
+</div>
 
 {{#if errorMessage}} 
   {{errorMessage}}
 {{/if}}
-</div>
+
 </div>

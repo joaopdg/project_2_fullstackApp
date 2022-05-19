@@ -1,20 +1,20 @@
 <div class="authBody">
-   <div class="innerauthBody">
-<h2>LOGIN</h2>
 
-<form action="/login" method="POST">
+<h2>LOGIN</h2>
+<div class="logInformDiv">
+<form class="formLogIn" action="/login" method="POST">
    <label for="email">Email</label>
       <input type="email" name="email" placeholder="johnSnow@camelCase.com">
    
    <label for="password">Password</label>
       <input type="password" name="password" placeholder="enter password here">
    
-
-   <button type="submit">Submit</button>
+<div class="logInbtnDiv">
+   <button class="logInBtn"
+   type="submit">Submit</button></div>
 </form>
-
+</div>
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
-</div>
 </div>

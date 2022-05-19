@@ -2,26 +2,19 @@
   <h2>Create an ad:</h2>
   <div class="createAdForm">
     <form
+    class="formAdCreate"
       action="/create-ad/{{user._id}}"
       method="POST"
       enctype="multipart/form-data"
     >
 
-      <label for="title">title:</label>
+      <label for="title">Title:</label>
       <input type="text" name="title" />
-
-      <label for="description">description:</label>
-      <textarea
-        name="description"
-        id="description"
-        cols="30"
-        rows="10"
-      ></textarea>
 
       <label for="image">Image:</label>
       <input type="file" name="ad-image" />
 
-      <label for="category">category:</label>
+      <label for="category">Category:</label>
       <select id="category" name="category">
         <option value="Clothes">Clothes</option>
         <option value="Accessories">Accessories</option>
@@ -34,7 +27,7 @@
         <option value="Other">Other</option>
       </select>
 
-      <label for="condition">condition:</label>
+      <label for="condition">Condition:</label>
       <select id="condition" name="condition">
         <option value="New with tags">New with tags</option>
         <option value="Excellent used condition">Excellent used condition</option>
@@ -43,7 +36,17 @@
         <option value="Very used">Very used</option>
       </select>
 
-      <button type="submit">Create</button>
+<label for="description">Description:</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="45"
+        rows="10"
+      ></textarea>
+
+
+<div class="adCreatebtnDiv">
+      <button type="submit" class="adCreatebtn">Create</button></div>
     </form>
   </div>
   {{#if errorMessage}}
