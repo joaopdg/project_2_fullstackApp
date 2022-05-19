@@ -142,9 +142,35 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           });
         }
         req.session.user = user;
-        req.app.locals.currentUser = user;
+      
+        User.findById(user._id)
+        .populate('receivedReq')
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "sender", 
+            model: "User",
+          },
+        })
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "senderItem", 
+            model: "Post",
+          },
+        })
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "receiverItem", 
+            model: "Post",
+          },
+        })
+        .then((newUser) => {
+          req.app.locals.currentUser = newUser;
+          return res.redirect("/");
+        })
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
       });
     })
 

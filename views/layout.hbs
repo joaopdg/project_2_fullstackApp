@@ -35,8 +35,13 @@
 <a href="#" id="notificationLink">Notifications</a>
 <div id="notificationContainer">
 <div id="notificationsBody" class="notifications">
-  {{#each user.receivedReq}}
-  <p>You have a new switch request</p>
+  {{#each currentUser.receivedReq}}
+  <p>{{sender.name}} wants to switch his {{senderItem.title}} with your {{receiverItem.title}}</p>
+  <a href="/{{_id}}/accept">Atag</a>
+  <form action="/{{_id}}/accept" method="post">
+  <button type="submit">Accept</button></form>
+  <form action="/{{_id}}/reject" method="post">
+  <button type="submit">Reject</button></form>
   {{/each}}
 </div>
 </li>

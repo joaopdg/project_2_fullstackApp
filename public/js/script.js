@@ -19,7 +19,7 @@ $(document).ready(function () {
   });
 
   //Popup on click
-  $("#notificationContainer").click(function () {
+/*   $("#notificationContainer").click(function () {
     return false;
-  });
+  }); */
 });
