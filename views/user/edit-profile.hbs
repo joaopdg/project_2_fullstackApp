@@ -1,7 +1,7 @@
 <div class="editProfileBody">
 <h3>Edit your profile</h3>
 <div class="editProfileForm">
-<form
+<form class="formEditProfile"
   action="/profile/{{user._id}}/edit"
   method="POST"
   enctype="multipart/form-data"
@@ -21,14 +21,6 @@
     required
   />
 
-  <label for="aboutMe">Bio:</label>
-  <textarea
-    name="aboutMe"
-    id="aboutMe"
-    cols="30"
-    rows="10"
-  >{{user.aboutMe}}</textarea>
-
   <label for="address">Address:</label>
   <input type="address" name="address" value="{{user.address}}" />
 
@@ -40,6 +32,15 @@
 
   <label for="image">Image:</label>
   <input type="file" name="user-image" />
+  
+  <label for="aboutMe">Bio:</label>
+  <textarea
+    name="aboutMe"
+    id="aboutMe"
+    cols="30"
+    rows="10"
+  >{{user.aboutMe}}</textarea>
+
 
   <button type="submit">Edit your account</button>
 </form>

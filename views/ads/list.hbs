@@ -7,11 +7,13 @@
   <img src="{{imageURL}}" alt="item-photo" />
   </div>
   <div class="eachAdInfo">
-  <h3>Title: {{title}}</h3>
-  <p>Condition: {{condition}}</p>
-  <p>Category: {{category}}</p>
-  <p>Posted by: <a href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
-  <a href="/ad-details/{{_id}}">View details</a>
+  <h3><b>{{title}}</b></h3>
+  <p><b>Condition:</b> {{condition}}</p>
+  <p><b>Category:</b> {{category}}</p>
+  <p><b>Posted by:</b> <a class="authorNameHref"
+  href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
+  <div class="viewDetbtnDiv">
+  <a class="adDetailbtn"  href="/ad-details/{{_id}}">View details</a></div>
 </div>
 </div>
 {{/each}}

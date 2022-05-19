@@ -8,38 +8,44 @@
 }
 
 .profileDiv {
-  width: 70vw;
+  width: 60vw;
   display: flex;
   flex-direction: row;
-  border: 2px solid salmon;
+  padding: 30px;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .profileImgDiv {
-  border: 2px solid black;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  
 }
 
 #userImage {
   width: 200px;
 }
 
-.userInfoInnerDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+.profileInfoDiv{
+margin-left: 30px;
+
+} 
+
 .userAds {
-  width: 70vw;
+  width: 60vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 2px solid yellow;
-
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 30px;
 }
 
 
@@ -48,15 +54,53 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 2px solid black;
-  width: 17vw;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  width: 15vw;
   height: auto;
-  margin: 10px;
+ margin: 10px;
+  padding: 10px;
+}
+
+.eachAdImg{
+display: flex;
+justify-content: center;
 }
 
 .eachAdImg img {
   width: 110px;
   height: 120px;
+}
+
+.viewDetbtnDiv{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.adDetailbtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.adDetailbtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.adDetailbtn:active {
+	position:relative;
+	top:1px;
 }
 
 
@@ -69,8 +113,25 @@
   align-items: center;
 }
 
+.editProfileForm{
+  width: 25vw;
+  justify-content: space-around;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding-left: 60px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
 .editProfileForm form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.formEditProfile input, textarea{
+margin-bottom: 15px;
+width: 22vw;
 }

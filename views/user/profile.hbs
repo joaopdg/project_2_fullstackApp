@@ -9,13 +9,9 @@
       <img src="{{user.imageURL}}" alt="user image" id="userImage" />
     </div>
     <div class="profileInfoDiv">
-      <h2> {{user.name}}</h2>
+      <h1> {{user.name}}</h1>
       <h4>Bio: {{user.aboutMe}}</h4>
-      <div class="userInfoInnerDiv">
-        <h4>Address: {{user.address}}</h4>
-        <h4>Location: {{user.location}}</h4>
-        <h4>Contact: {{user.contact}}</h4>
-      </div>
+      
     </div>
   </div>
   <div class="userAds">
@@ -33,7 +29,8 @@
           <h3>{{title}}</h3>
           <p><b>category:</b> {{category}}</p>
           <p><b>condition:</b> {{condition}}</p>
-          <a href="/ad-details/{{_id}}">View details</a>
+          <div class="viewDetbtnDiv">
+          <a href="/ad-details/{{_id}}" class="adDetailbtn">View details</a></div>
         </div>
       </div>
     {{/each}}
