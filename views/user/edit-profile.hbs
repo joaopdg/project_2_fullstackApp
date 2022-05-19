@@ -1,5 +1,8 @@
 <div class="editProfileBody">
-<h3>Edit your profile</h3>
+  <div class="borderEditProfile">
+  <div class="titleEditProfile">
+<h2>Edit your profile</h2>
+</div>
 <div class="editProfileForm">
 <form class="formEditProfile"
   action="/profile/{{user._id}}/edit"
@@ -37,15 +40,16 @@
   <textarea
     name="aboutMe"
     id="aboutMe"
-    cols="30"
-    rows="10"
+    cols="10"
+    rows="7"
   >{{user.aboutMe}}</textarea>
 
-
-  <button type="submit">Edit your account</button>
+<div class="editPtofilebtnDiv">
+  <button class="editProfileBtn" type="submit">Edit your account</button></div>
 </form>
 </div>
 {{#if errorMessage}}
   {{errorMessage}}
 {{/if}}
+</div>
 </div>

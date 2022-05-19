@@ -1,9 +1,7 @@
 <div class="adDetailsBody">
 
 <div class="postDetail">
-{{#notEquals user._id post.author._id}}
-<a href="/ad-details/{{post._id}}/request">Switch request</a>
-{{/notEquals}}
+
 <div class="postImgAndText">
   <div class="postDetailImg">
 <img src="{{post.imageURL}}" alt="image of{{post.title}}" />
@@ -19,14 +17,18 @@
 
 <div class="postDetailButtons">
   {{#ifEquals user._id post.author}}
-  <a href="/ad-edit/{{post._id}}">edit</a>
+  <a class="editAdBtn" href="/ad-edit/{{post._id}}">edit</a>
 
-  <form action="/ad-details/{{post._id}}/delete" method="post">
-    <button type="submit">Delete</button>
+  <form class="deleteAdBtnForm" action="/ad-details/{{post._id}}/delete" method="post">
+    <button class="deleteAdBtn"  type="submit">Delete</button>
   </form>
 {{/ifEquals}}
 </div>
-
+<div class="switchReqbtnDiv">
+{{#notEquals user._id post.author._id}}
+<a href="/ad-details/{{post._id}}/request">Switch request</a>
+{{/notEquals}}
+</div>
 </div>
 
 
@@ -50,7 +52,8 @@
   <div class="commentHeadRight">
   {{#ifEquals ../user._id author._id}}
     <form action="/ad-details/{{_id}}" method="post">
-      <button type="submit">Delete comment</button>
+      <button class="deleteComBtn"
+      type="submit">Delete comment</button>
     </form>
 {{/ifEquals}}
 </div>
@@ -64,10 +67,11 @@
 
 
 <div class="writteComment">
-<form action="/ad-details/{{post._id}}/comments" method="post">
-  <textarea id="content" name="content" rows="4" cols="50">
+<form class="formComment" action="/ad-details/{{post._id}}/comments" method="post">
+  <textarea id="content" name="content" rows="4" cols="50" >Write your text here
   </textarea>
-  <button type="submit">Comment</button>
+  <button class="commentBtn"
+  type="submit">Comment</button>
 </form>
 
 

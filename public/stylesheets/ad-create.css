@@ -8,13 +8,25 @@
   align-items: center;
 }
 
-.createAdForm{
-  width: 25vw;
-  height: 60vh;
+.borderAdCreate{
   border: 2px solid lightgray;
   border-radius: 25px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   padding: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.borderAdCreate h2{
+  margin-top: 0;
+}
+.titleadCreate{
+  display: flex;
+  justify-content: center;
+}
+.createAdForm{
+  width: 25vw;
+  height: 60vh;
+  
 }
 .createAdForm form {
   display: flex;
@@ -77,6 +89,19 @@
   align-items: center;
 }
 
+.editAdBorder{
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px 40px 50px 40px;
+  margin-top: 30px;
+}
+
+.editAdTitle{
+display: flex;
+justify-content: center;
+}
+
 .adEditForm form {
   display: flex;
   flex-direction: column;
@@ -85,10 +110,7 @@
 .adEditForm{
   width: 25vw;
   height: 60vh;
-  border: 2px solid lightgray;
-  border-radius: 25px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  padding: 40px;
+  
 }
 .formAdEdit input, textarea, select{
   margin-bottom: 15px;
@@ -97,6 +119,7 @@
 .adEditbtnDiv{
   width: 25vw;
   margin-top: 15px;
+  
   display: flex;
   justify-content: space-around;
 }

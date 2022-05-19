@@ -6,16 +6,32 @@
 }
 /* P O S T - D E T A I L S */
 .postDetail {
-  border: 1px solid black;
-  width: 70vw;
+    margin-top: 30px;
+    border: 2px solid lightgray;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+  width: 60vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .postImgAndText{
 display: flex;
 flex-direction: row;
 align-items: center;
+width: 80%;
+}
+.switchReqbtnDiv a{
+    text-decoration: none;
+    background-color:#e6e218;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+    color: black;
+    text-shadow:0px 1px 0px #ffffff;
+    font-size:12px;
+	font-weight:bold;
+	padding:4px 15px
 }
 
 .postDetailImg img{
@@ -27,24 +43,87 @@ align-items: center;
 
 .postDetailButtons {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    align-items: flex-start;
+   
 }
+.editAdBtn{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    
+}
+.editAdBtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.editAdBtn:active {
+	position:relative;
+	top:1px;
+}
+
+.deleteAdBtnForm{
+    display: flex;
+    align-items: flex-start;
+}
+
+.deleteAdBtn{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#880505;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.deleteAdBtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.deleteAdBtn:active {
+	position:relative;
+	top:1px;
+}
+
+
 
 /* C O M M E N T S */
 .allComments {
-  border: 1px solid black;
-  width: 70vw;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid lightgray;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  width: 60vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
 }
 
 .eachComment {
-    border: 1px solid grey;
+    
     display: flex;
     flex-direction: column;
     width: 60vw;
+    border-bottom: 2px solid lightgray;
 }
 
 .commentHead {
@@ -59,7 +138,11 @@ align-items: center;
     flex-direction: row;
     align-items: center;
 }
-
+.commentHeadLeft a{
+    text-decoration: none;
+    color: black;
+    margin-left: 5px;
+}
 .commentHeadLeft img {
     width: 20px;
     height: 20px;
@@ -76,4 +159,63 @@ align-items: center;
 .writteComment form{
     display: flex;
     flex-flow: column wrap;
+    margin-top: 30px;
+}
+
+.formComment textarea{
+ width: 60vw;
+ border: 2px solid lightgray;
+   
+}
+
+
+.commentBtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.commentBtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.commentBtn:active {
+	position:relative;
+	top:1px;
+}
+
+
+.deleteComBtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#880505;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.deleteComBtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.deleteComBtn:active {
+	position:relative;
+	top:1px;
 }
