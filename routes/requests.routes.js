@@ -92,7 +92,7 @@ router.get("/request/:id/reject", isLoggedIn, async (req, res, next) => {
     $pull: { receivedReq: request._id },
   });
 
-  res.render("ads/req-response", request);
+  res.render("ads/req-denied", request);
 });
 
 module.exports = router;

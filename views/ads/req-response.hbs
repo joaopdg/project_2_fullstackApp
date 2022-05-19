@@ -1,5 +1,4 @@
 <div class="reqResBody">
-{{#ifEquals currentUser.recievedReq.status accepted}}
 <div class="reqAccept">
     <div class="requestAcceptmsg">
 <h1>Switch request accepted</h1>
@@ -49,13 +48,6 @@
 </h1>
 </div>
 </div>
-
-{{/ifEquals}}
 </div>
 
 
-{{#ifEquals currentUser.recievedReq.status rejected}}
-
-<h1>Switch request denied </h1>
-<h3>Check <a href="/list">Here</a> all the other ads available for switch</h3>
-{{/ifEquals}}
