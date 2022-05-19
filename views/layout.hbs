@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
-    
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/login-signup.css" />
     <link rel="stylesheet" href="/stylesheets/profile.css" />
@@ -20,14 +20,29 @@
   
   <body>
 
-<div class="navBar">
-  <a href="/">home</a>
-  <a href="/list">view all ads</a>
 
+
+
+
+<div class="navbar">
+  <img src="/images/logo.png" alt="logo">
+  <a href="/">Home</a>
+  <a href="/list">All ads</a>
   {{#if user}}
-    <a href="/profile/{{user._id}}">profile</a>
+      <a href="/create-ad/{{user._id}}">create ad</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/profile/{{user._id}}">my profile</a>
+  <a href="/profile/{{user._id}}/edit">settings</a>
     <a href="/logout">logout</a>
-    <a href="/create-ad/{{user._id}}">create ad</a>
+    </div>
+  </div>
+
+
 
 <ul id="nav">
 <li id="notification_li">
@@ -59,11 +74,24 @@
 </li>
 </ul>
 
+
   {{else}}
     <a href="/signup">signup</a>
     <a href="/login">login</a>
   {{/if}}
+
+
 </div>
+
+
+  
+
+
+
+
+
+
+
 
 
 
