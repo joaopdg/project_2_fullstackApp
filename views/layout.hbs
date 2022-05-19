@@ -52,7 +52,7 @@
   {{/each}}
   {{#each currentUser.sentReq}}
     {{#if status}}
-    <p>Your request has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
+    <p>Your request of {{receiver.name}}has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
     {{/if}}
   {{/each}}
 </div>

@@ -46,6 +46,13 @@ router.get("/", (req, res, next) => {
       .populate({
         path: "sentReq",
         populate: {
+          path: "receiver",
+          model: "User",
+        },
+      })
+      .populate({
+        path: "sentReq",
+        populate: {
           path: "senderItem",
           model: "Post",
         },
