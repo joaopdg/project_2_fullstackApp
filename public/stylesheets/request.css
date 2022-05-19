@@ -1,3 +1,24 @@
+/* NOTIFICATIONS */
+.notif{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.notifImage img{
+width: 50px;
+height: 50px;
+}
+
+.notifButtons{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+/* FORM */
 .formRequestDiv {
   width: 100%;
   height: 50vh;
