@@ -53,7 +53,7 @@ router.get("/request/:id/accept", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   let request = await Request.findByIdAndUpdate(
     id,
-    { status: true },
+    { status: 'accepted' },
     { new: true }
   )
 
@@ -84,7 +84,7 @@ router.get("/request/:id/reject", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   let request = await Request.findByIdAndUpdate(
     id,
-    { status: false },
+    { status: 'rejected' },
     { new: true }
   );
 

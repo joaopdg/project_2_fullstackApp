@@ -13,7 +13,8 @@ const requestSchema = new Schema(
       },
 
     status: {
-        type: Boolean,
+        type: String,
+        enum: ['accepted', 'rejected']
       },
 
   },
