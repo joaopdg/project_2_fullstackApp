@@ -22,14 +22,14 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
 
 router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  if(req.session.user._id === id){
-  User.findById(id)
-    .then((user) => {
-      res.render("user/edit-profile", { user });
-    })
-    .catch((err) => next(err));
-  }else{
-    res.redirect('/auth')
+  if (req.session.user._id === id) {
+    User.findById(id)
+      .then((user) => {
+        res.render("user/edit-profile", { user });
+      })
+      .catch((err) => next(err));
+  } else {
+    res.redirect("/auth");
   }
 });
 
@@ -40,78 +40,75 @@ router.post(
   (req, res, next) => {
     const { id } = req.params;
 
+    if (req.session.user._id === id) {
+      const { name, email, password, aboutMe, location, address, contact } =
+        req.body;
 
+      if (!password) {
+        return res.status(400).render("user/edit-profile", {
+          errorMessage: "Please provide a new password",
+        });
+      }
 
-    if(req.session.user._id === id){
-    const { name, email, password, location, address, contact } = req.body;
-
-    if (!password) {
-      return res.status(400).render("user/edit-profile", {
-        errorMessage: "Please provide a new password",
-      });
-    }
-
-    return bcrypt
-    .genSalt(saltRounds)
-    .then((salt) => bcrypt.hash(password, salt))
-    .then((hashedPassword) => {
-    if (req.file) {
-      User.findByIdAndUpdate(id, {
-        name,
-        email,
-        password: hashedPassword,
-        location,
-        address,
-        contact,
-        imageURL: req.file.path,
-      })
-        .then(() => {
-          res.redirect(`/profile/${id}`);
-        })
-        .catch((err) => next(err));
+      return bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(password, salt))
+        .then((hashedPassword) => {
+          if (req.file) {
+            User.findByIdAndUpdate(id, {
+              name,
+              email,
+              password: hashedPassword,
+              aboutMe,
+              location,
+              address,
+              contact,
+              imageURL: req.file.path,
+            })
+              .then(() => {
+                res.redirect(`/profile/${id}`);
+              })
+              .catch((err) => next(err));
+          } else {
+            User.findByIdAndUpdate(id, {
+              name,
+              email,
+              password: hashedPassword,
+              aboutMe,
+              location,
+              address,
+              contact,
+            })
+              .then(() => {
+                res.redirect(`/profile/${id}`);
+              })
+              .catch((err) => next(err));
+          }
+        });
     } else {
-      User.findByIdAndUpdate(id, {
-        name,
-        email,
-        password: hashedPassword,
-        location,
-        address,
-        contact,
-      })
-        .then(() => {
-          res.redirect(`/profile/${id}`);
-        })
-        .catch((err) => next(err));
-    }})
-
-
-  }else{
-    res.redirect('/auth')
-  }
+      res.redirect("/auth");
+    }
   }
 );
 
 router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  if(req.session.user._id === id){
-
-  User.findByIdAndRemove(id)
-    .then((user) => {
-      return Post.deleteMany({_id: {$in: user.posts}});
-    })
-    .then(()=>{
-      return Comment.deleteMany({author: id})
-    })
-    .then(() => {
-      
-      req.session.destroy();
-      res.redirect("/");
-    })
-    .catch((err) => next(err));
-  }else{
-    res.redirect('/auth')
+  if (req.session.user._id === id) {
+    User.findByIdAndRemove(id)
+      .then((user) => {
+        return Post.deleteMany({ _id: { $in: user.posts } });
+      })
+      .then(() => {
+        return Comment.deleteMany({ author: id });
+      })
+      .then(() => {
+        req.session.destroy();
+        res.redirect("/");
+      })
+      .catch((err) => next(err));
+  } else {
+    res.redirect("/auth");
   }
 });
-
 
 module.exports = router;
