@@ -38,7 +38,7 @@
   {{#each currentUser.receivedReq}}
   <img src="{{senderItem.ImageURL}}" alt="senderItem.title">
   <p>{{sender.name}} wants to switch {{senderItem.title}} with your {{receiverItem.title}}</p>
-  <form action="/request/{{_id}}/accept" method="post">
+  <form action="/request/{{_id}}/accept" method="get">
   <button type="submit">Accept</button></form>
   <form action="/request/{{_id}}/reject" method="post">
   <button type="submit">Reject</button></form>

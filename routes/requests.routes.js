@@ -22,6 +22,8 @@ router.get("/ad-details/:id/request", isLoggedIn, (req, res, next) => {
     .catch((err) => next(err));
 });
 
+
+
 router.post("/ad-details/:id/request", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   const { sender, receiver, message, senderItem, receiverItem } = req.body;
@@ -49,36 +51,29 @@ router.post("/ad-details/:id/request", isLoggedIn, async (req, res, next) => {
   res.redirect(`/ad-details/${id}`);
 });
 
+
 router.get("/request/:id/accept", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
   Request.findById(id)
 
     .populate({
-      populate: {
         path: "sender",
         model: "User",
-      },
     })
     .populate({
-      populate: {
         path: "senderItem",
         model: "Post",
-      },
     })
     .populate({
-      populate: {
         path: "receiverItem",
         model: "Post",
-      },
     })
     .populate({
-      populate: {
         path: "receiver",
         model: "User",
-      },
     })
     .then((request) => {
-      res.render("ads/req-response", { request });
+      res.render("ads/req-response",  request );
     })
     .catch((err) => next(err));
 });
