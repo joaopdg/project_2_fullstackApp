@@ -1,14 +1,20 @@
-<form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="authBody">
 
-   <button type="submit">Submit</button>
+<h2>LOGIN</h2>
+<div class="logInformDiv">
+<form class="formLogIn" action="/login" method="POST">
+   <label for="email">Email</label>
+      <input type="email" name="email" placeholder="johnSnow@camelCase.com">
+   
+   <label for="password">Password</label>
+      <input type="password" name="password" placeholder="enter password here">
+   
+<div class="logInbtnDiv">
+   <button class="logInBtn"
+   type="submit">Submit</button></div>
 </form>
-
+</div>
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
+</div>

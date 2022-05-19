@@ -1,0 +1,127 @@
+/* create ad */
+
+.creatAdBody {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAdForm{
+  width: 25vw;
+  height: 60vh;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+}
+.createAdForm form {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start
+}
+.formAdCreate input, textarea, select{
+  margin-bottom: 10px;
+  width: 25vw;
+}
+
+
+.adCreatebtnDiv {
+  width: 25vw;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  
+}
+.adCreatebtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.adCreatebtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.adCreatebtn:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+
+
+
+
+/* edit ad  */
+.adEditBody {
+  width: 100vw;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adEditForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.adEditForm{
+  width: 25vw;
+  height: 60vh;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+}
+.formAdEdit input, textarea, select{
+  margin-bottom: 15px;
+  width: 25vw;
+}
+.adEditbtnDiv{
+  width: 25vw;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.adEditbtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.adEditbtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.adEditbtn:active {
+	position:relative;
+	top:1px;
+}

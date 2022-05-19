@@ -13,92 +13,106 @@ const User = require("../models/User.model");
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const fileUpload = require("../config/cloudinary.config");
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+router.post(
+  "/signup",
+  isLoggedOut,
+  fileUpload.single("user-image"),
+  (req, res) => {
+    const { name, email, password, aboutMe, address, location, contact } = req.body;
 
-  if (!username) {
-    return res.status(400).render("auth/signup", {
-      errorMessage: "Please provide your username.",
-    });
-  }
-
-  if (password.length < 8) {
-    return res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
-    });
-  }
-
-  //   ! This use case is using a regular expression to control for special characters and min length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-
-  if (!regex.test(password)) {
-    return res.status(400).render("signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-  }
-  */
-
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
-    // If the user is found, send the message username is taken
-    if (found) {
-      return res
-        .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+    if (!name) {
+      return res.status(400).render("auth/signup", {
+        errorMessage: "Please provide your name.",
+      });
     }
 
-    // if user is not found, create a new user - start with hashing the password
-    return bcrypt
-      .genSalt(saltRounds)
-      .then((salt) => bcrypt.hash(password, salt))
-      .then((hashedPassword) => {
-        // Create a user and save it in the database
-        return User.create({
-          username,
-          password: hashedPassword,
-        });
-      })
-      .then((user) => {
-        // Bind the user to the session object
-        req.session.user = user;
-        res.redirect("/");
-      })
-      .catch((error) => {
-        if (error instanceof mongoose.Error.ValidationError) {
-          return res
-            .status(400)
-            .render("auth/signup", { errorMessage: error.message });
-        }
-        if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
-            errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
-          });
-        }
-        return res
-          .status(500)
-          .render("auth/signup", { errorMessage: error.message });
+    if (password.length < 8) {
+      return res.status(400).render("auth/signup", {
+        errorMessage: "Your password needs to be at least 8 characters long.",
       });
-  });
-});
+    }
+
+    User.findOne({ name }).then((found) => {
+      // If the user is found, send the message name is taken
+      if (found) {
+        return res
+          .status(400)
+          .render("auth/signup", { errorMessage: "name already taken." });
+      }
+
+      // if user is not found, create a new user - start with hashing the password
+      return bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(password, salt))
+        .then((hashedPassword) => {
+          // Create a user and save it in the database
+
+          if (req.file) {
+            return User.create({
+              name,
+              email,
+              password: hashedPassword,
+              aboutMe,
+              address,
+              location,
+              contact,
+              imageURL: req.file.path,
+            });
+          } else {
+            return User.create({
+              name,
+              email,
+              password: hashedPassword,
+              aboutMe,
+              address,
+              location,
+              contact,
+            });
+          }
+        })
+        .then((user) => {
+          // Bind the user to the session object
+          req.session.user = user;
+          req.app.locals.currentUser = user;
+          res.redirect("/");
+        })
+        .catch((error) => {
+          if (error instanceof mongoose.Error.ValidationError) {
+            return res
+              .status(400)
+              .render("auth/signup", { errorMessage: error.message });
+          }
+
+          if (error.code === 11000) {
+            return res.status(400).render("auth/signup", {
+              errorMessage:
+                "name need to be unique. The name you chose is already in use.",
+            });
+          }
+          return res
+            .status(500)
+            .render("auth/signup", { errorMessage: error.message });
+        });
+    });
+  }
+);
 
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res.status(400).render("auth/login", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Please provide your email.",
     });
   }
 
@@ -110,8 +124,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
   }
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  // Search the database for a user with the email submitted in the form
+  User.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
@@ -120,7 +134,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
           return res.status(400).render("auth/login", {
@@ -128,8 +142,35 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           });
         }
         req.session.user = user;
+      
+        User.findById(user._id)
+        .populate('receivedReq')
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "sender", 
+            model: "User",
+          },
+        })
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "senderItem", 
+            model: "Post",
+          },
+        })
+        .populate({
+          path: "receivedReq",
+          populate: {
+            path: "receiverItem", 
+            model: "Post",
+          },
+        })
+        .then((newUser) => {
+          req.app.locals.currentUser = newUser;
+          return res.redirect("/");
+        })
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
       });
     })
 
@@ -151,5 +192,12 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
+
+
+router.get("/auth", (req, res) => {
+  res.render("auth/error");
+});
+
 
 module.exports = router;

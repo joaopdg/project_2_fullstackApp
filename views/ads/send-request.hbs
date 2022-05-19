@@ -1,0 +1,43 @@
+<div class="adDetailsBody">
+
+<div class="postDetail">
+
+<div class="postImgAndText">
+  <div class="postDetailImg">
+<img src="{{post.imageURL}}" alt="image of{{post.title}}" />
+</div>
+
+<div class="postDetailText">
+<h3>{{post.title}}</h3>
+<p><b>category:</b> {{post.category}}</p>
+<p><b>condition:</b> {{post.condition}}</p>
+<p><b>{{post.description}}</p>
+</div>
+</div>
+</div>
+
+<div class="formRequestdiv">
+<form
+      action="/ad-details/{{post._id}}/request" method="POST" >
+<input type="hidden" name="sender" class="sender" value="{{user._id}}">
+<input type="hidden" name="receiver" class="receiver" value="{{post.author}}">
+      
+      <label for="message">Message:</label>
+      <textarea
+        name="message"
+        id="message"
+        cols="40"
+        rows="5"
+      ></textarea>
+
+<label for="senderItem">Choose the item you want to switch:</label>
+<select id="senderItem" name="senderItem" required>
+    {{#each user.posts}}
+        <option value="{{_id}}">{{title}}</option>
+       {{/each}}
+</select>
+
+      <button type="submit">Send Switch request</button>
+    </form>
+</div>
+</div>

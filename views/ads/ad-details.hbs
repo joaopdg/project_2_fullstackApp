@@ -1,0 +1,76 @@
+<div class="adDetailsBody">
+
+<div class="postDetail">
+{{#notEquals user._id post.author._id}}
+<a href="/ad-details/{{post._id}}/request">Switch request</a>
+{{/notEquals}}
+<div class="postImgAndText">
+  <div class="postDetailImg">
+<img src="{{post.imageURL}}" alt="image of{{post.title}}" />
+</div>
+
+<div class="postDetailText">
+<h3>{{post.title}}</h3>
+<p><b>category:</b> {{post.category}}</p>
+<p><b>condition:</b> {{post.condition}}</p>
+<p><b>{{post.description}}</p>
+</div>
+</div>
+
+<div class="postDetailButtons">
+  {{#ifEquals user._id post.author}}
+  <a href="/ad-edit/{{post._id}}">edit</a>
+
+  <form action="/ad-details/{{post._id}}/delete" method="post">
+    <button type="submit">Delete</button>
+  </form>
+{{/ifEquals}}
+</div>
+
+</div>
+
+
+<div class="allComments">
+
+  {{#unless post.comments}}
+  <p>No comments yet!</p>
+{{/unless}}
+
+{{#each post.comments}}
+
+<div class="eachComment">
+
+  <div class="commentHead">
+
+    <div class="commentHeadLeft">
+      <img src="{{author.imageURL}}" alt="avatar">
+  <p><a href="/profile/{{author._id}}"><b>{{author.name}}</b></a></p>
+  </div>
+
+  <div class="commentHeadRight">
+  {{#ifEquals ../user._id author._id}}
+    <form action="/ad-details/{{_id}}" method="post">
+      <button type="submit">Delete comment</button>
+    </form>
+{{/ifEquals}}
+</div>
+</div>
+<div class="commentBody">
+  <p>{{this.content}}</p>
+  </div>
+  </div>
+
+{{/each}}
+
+
+<div class="writteComment">
+<form action="/ad-details/{{post._id}}/comments" method="post">
+  <textarea id="content" name="content" rows="4" cols="50">
+  </textarea>
+  <button type="submit">Comment</button>
+</form>
+
+
+</div>
+  </div>
+</div>

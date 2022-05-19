@@ -1,0 +1,116 @@
+.authBody{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* log in */
+
+.logInformDiv{
+    width: 20vw;
+    height: 25vh;
+    border: 2px solid lightgray;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+}
+.logInformDiv form {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start
+  }
+
+  .formLogIn input, textarea, select{
+    margin-bottom: 30px;
+    width: 20vw;
+  }
+
+  .logInbtnDiv{
+    width: 20vw;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .logInBtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:4px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.logInBtn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.logInBtn:active {
+	position:relative;
+	top:1px;
+}
+
+
+/* sign up */
+
+.signUpFormDiv{
+    width: 25vw;
+    height: 100vh;
+    border: 2px solid lightgray;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.signUpFormDiv form {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start
+  }
+
+  .formSignUp input, textarea, select{
+    margin-bottom: 15px;
+    width: 25vw;
+  }
+
+  .signUpbtnDiv{
+    width: 25vw;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .signUpBtn {
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+      background-color:#ededed;
+      border-radius:6px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#777777;
+      font-family:Arial;
+      font-size:12px;
+      font-weight:bold;
+      padding:4px 15px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #ffffff;
+  }
+  .signUpBtn:hover {
+      background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+      background-color:#dfdfdf;
+  }
+  .signUpBtn:active {
+      position:relative;
+      top:1px;
+  }

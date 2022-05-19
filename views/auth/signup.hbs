@@ -1,14 +1,41 @@
-<form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="authBody">
 
-   <button type="submit">Submit</button>
+<h2>SIGNUP</h2>
+<div class="signUpFormDiv">
+<form class="formSignUp" action="/signup" method="POST" enctype="multipart/form-data">
+
+  <label for="name">Name:</label>
+  <input type="text" name="name" placeholder="John Snow" />
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" placeholder="johnSnow@camelCase.com" />
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" placeholder="enter password here" />
+
+  <label for="address">Address:</label>
+  <input type="address" name="address" placeholder="Jardim do Tabaco, 82 " />
+
+  <label for="location">Location:</label>
+  <input type="location" name="location" placeholder="Lisbon" />
+
+  <label for="contact">Phone number:</label>
+  <input type="number" id="contact" name="contact" placeholder="999 999 999" />
+
+  <label for="image">Image:</label>
+  <input type="file" name="user-image" />
+  
+  <label for="aboutMe">Bio:</label>
+  <textarea name="aboutMe" id="aboutMe" cols="30" rows="5"></textarea>
+
+
+<div class="signUpbtnDiv">
+  <button class="signUpBtn" type="submit">Create your account</button></div>
 </form>
+</div>
 
-{{#if errorMessage}}
-   {{errorMessage}}
+{{#if errorMessage}} 
+  {{errorMessage}}
 {{/if}}
+
+</div>

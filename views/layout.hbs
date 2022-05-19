@@ -5,13 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/login-signup.css" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+    <link rel="stylesheet" href="/stylesheets/all-ads.css" />
+    <link rel="stylesheet" href="/stylesheets/ad-details.css" />
+    <link rel="stylesheet" href="/stylesheets/ad-create.css" />
+    <link rel="stylesheet" href="/stylesheets/request.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
+
+  
   <body>
+
+
+
+
+
+<div class="navbar">
+  <img src="/images/logo.png" alt="logo">
+  <a href="/">Home</a>
+  <a href="/list">All ads</a>
+  {{#if user}}
+      <a href="/create-ad/{{user._id}}">create ad</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a href="/profile/{{user._id}}">my profile</a>
+  <a href="/profile/{{user._id}}/edit">settings</a>
+    <a href="/logout">logout</a>
+    </div>
+  </div>
+
+
+
+<ul id="nav">
+<li id="notification_li">
+<span id="notification_count">{{user.receivedReq.length}}</span>
+<a href="#" id="notificationLink">Notifications</a>
+<div id="notificationContainer">
+<div id="notificationsBody" class="notifications">
+  {{#each currentUser.receivedReq}}
+<div class="notif">
+<div class="notifImage">
+  <img src="{{senderItem.imageURL}}">
+  </div>
+
+  <p><a href="/profile/{{sender._id}}">{{sender.name}}</a> wants to switch <a href="/ad-details/{{senderItem._id}}">{{senderItem.title}}</a> with your <a href="/ad-details/{{receiverItem._id}}">{{receiverItem.title}}</a></p>
+</div>
+  <div class="notifButtons">
+  <form action="/request/{{_id}}/accept" method="get">
+  <button type="submit">Accept</button></form>
+  <form action="/request/{{_id}}/reject" method="get">
+  <button type="submit">Reject</button></form>
+  </div>
+  {{/each}}
+  {{#each currentUser.sentReq}}
+    {{#if status}}
+    <p>Your request of {{receiver.name}}has been accepted! Check the details <a href="/request/{{_id}}/accept">here</a></p>
+    {{/if}}
+  {{/each}}
+</div>
+</li>
+</ul>
+
+
+  {{else}}
+    <a href="/signup">signup</a>
+    <a href="/login">login</a>
+  {{/if}}
+
+
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
 
     {{{body}}}
 
+
+
+
+<footer>
+  <p>João Gonçalves & Mariana Oliveira</p>
+</footer>
     <script src="/js/script.js"></script>
   </body>
 

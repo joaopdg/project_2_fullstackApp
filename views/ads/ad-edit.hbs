@@ -1,0 +1,55 @@
+<div class="adEditBody">
+  <h2>Edit this ad:</h2>
+  <div class="adEditForm">
+    <form class="formAdEdit"
+      action="/ad-edit/{{post._id}}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+
+      <label for="title">Title:</label>
+      <input type="text" name="title" value="{{post.title}}" />
+
+
+      <label for="image">Image:</label>
+      <input type="file" name="ad-image" />
+
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="Clothes">Clothes</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Footwear">Footwear</option>
+        <option value="Tech">Tech</option>
+        <option value="Books">Books</option>
+        <option value="Sports">Sports</option>
+        <option value="Musical Instruments">Musical Instruments</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="condition">Condition:</label>
+      <select id="condition" name="condition">
+        <option value="New with tags">New with tags</option>
+        <option value="Excellent used condition">Excellent used condition</option>
+        <option value="Gently used and well mantained">Gently used and well
+          mantained</option>
+        <option value="Very used">Very used</option>
+      </select>
+
+<label for="description">Description:</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+      >{{post.description}}</textarea>
+<div class="adEditbtnDiv">
+      <button class="adEditbtn" type="submit">Edit</button> </div>
+    </form>
+  </div>
+
+  {{#if errorMessage}}
+    {{errorMessage}}
+  {{/if}}
+
+</div>

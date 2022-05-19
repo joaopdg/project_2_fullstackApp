@@ -1,0 +1,38 @@
+<div class="profileBody">
+
+
+  <form action="/profile/{{user._id}}/delete" method="post">
+    <button type="submit">Delete my profile</button>
+  </form>
+  <div class="profileDiv">
+    <div class="profileImgDiv">
+      <img src="{{user.imageURL}}" alt="user image" id="userImage" />
+    </div>
+    <div class="profileInfoDiv">
+      <h1> {{user.name}}</h1>
+      <h4>Bio: {{user.aboutMe}}</h4>
+      
+    </div>
+  </div>
+  <div class="userAds">
+    {{#unless ads}}
+    
+    <h3>No ads created yet!</h3>
+    
+    {{/unless}}
+    {{#each ads}}
+      <div class="eachAd">
+        <div class="eachAdImg">
+          <img src="{{imageURL}}" alt="{{title}}">
+        </div>
+        <div class="eachAdinfo">
+          <h3>{{title}}</h3>
+          <p><b>category:</b> {{category}}</p>
+          <p><b>condition:</b> {{condition}}</p>
+          <div class="viewDetbtnDiv">
+          <a href="/ad-details/{{_id}}" class="adDetailbtn">View details</a></div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

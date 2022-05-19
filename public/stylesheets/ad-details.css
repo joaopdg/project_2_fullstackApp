@@ -1,0 +1,79 @@
+.adDetailsBody {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* P O S T - D E T A I L S */
+.postDetail {
+  border: 1px solid black;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.postImgAndText{
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.postDetailImg img{
+    width: 15vw;
+}
+
+.postDetailText {
+}
+
+.postDetailButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* C O M M E N T S */
+.allComments {
+  border: 1px solid black;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eachComment {
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+.commentHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.commentHeadLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.commentHeadLeft img {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.commentHeadRight {
+}
+
+.commentBody {
+}
+
+.writteComment form{
+    display: flex;
+    flex-flow: column wrap;
+}
